@@ -1,0 +1,3 @@
+jupyterlab>=3
+checkmarkandcross
+pandas==1.4.3
