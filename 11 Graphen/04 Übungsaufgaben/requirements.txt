@@ -1,8 +1,7 @@
 jupyterlab>=3
-networkx==2.8.5
-matplotlib==3.5.2
-fa2==0.3.5
-plotly==5.9.0
 checkmarkandcross
+networkx==2.8.5
 numpy==1.23.0
 scipy==1.8.1
+fa2==0.3.5
+plotly==5.9.0
