@@ -12,6 +12,7 @@ imports = '''
     
     from sklearn.cluster import KMeans, DBSCAN
     from sklearn.preprocessing import MinMaxScaler
+    from sklearn.metrics import silhouette_score
 '''
 load_data = 'df = pd.read_pickle("df.pickle")'
 init_rnd = 'numpy.random.seed(16)'
@@ -105,3 +106,21 @@ def aufgabe3(tb: JPTestBook, params: JPTestParams):
     ''', 'df')
 
     yield test.equals(result), 2
+
+
+# Aufgabe 4
+@JPTest('Aufgabe 4', max_score=2, execute=[
+    imports, load_data, init_rnd,
+    "df['kmeans'] = KMeans(4).fit_predict(df[['adult_ratio', 'movie_vote_average']])",
+    "df['dbscan'] = DBSCAN(eps=0.15, min_samples=3).fit_predict(df[['adult_ratio', 'movie_vote_average']])",
+    ('task-4',)
+])
+def aufgabe3(tb: JPTestBook):
+    result_kmeans, result_dbscan = tb.get('kmeans_silhouette', 'dbscan_silhouette')
+    test_kmeans, test_dbscan = tb.inject('''
+        kmeans_silhouette = silhouette_score(df[['adult_ratio', 'movie_vote_average']], df['kmeans'])
+        dbscan_silhouette = silhouette_score(df[['adult_ratio', 'movie_vote_average']], df['dbscan'])
+    ''', 'kmeans_silhouette', 'dbscan_silhouette')
+
+    yield abs(test_kmeans - result_kmeans) < 1e-7, 1
+    yield abs(test_dbscan - result_dbscan) < 1e-7, 1

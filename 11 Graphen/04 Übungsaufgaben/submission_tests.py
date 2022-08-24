@@ -41,7 +41,7 @@ def post():
 
 
 # Aufgabe 1
-@JPTest('Aufgabe 1', max_score=1, execute=[imports, ('task-1',)])
+@JPTest('Aufgabe 1', max_score=1, execute=[imports, ('task-1',)], timeout=300)
 def aufgabe1(tb: JPTestBook):
     result = tb.get('G')
     test = tb.inject('''

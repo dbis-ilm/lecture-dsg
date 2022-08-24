@@ -1,4 +1,5 @@
 jupyterlab>=3
 networkx==2.8.5
-fa2==0.3.5
+git+https://github.com/bhargavchippada/forceatlas2
 plotly==5.9.0
+pandas==1.4.3

@@ -25,3 +25,10 @@ def aufgabe3(df: pd.DataFrame):
         len(df) == 71
         and 'dbscan' in df
     )
+
+
+def aufgabe4(kmeans: float, dbscan: float):
+    return image(
+        isinstance(kmeans, float) and 0 < kmeans <= 1
+        and isinstance(dbscan, float) and 0 < dbscan <= 1
+    )

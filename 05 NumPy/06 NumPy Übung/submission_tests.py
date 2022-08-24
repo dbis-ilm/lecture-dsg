@@ -44,10 +44,10 @@ imports = '''
 '''
 
 load_dataset = '''
-    with gzip.open('_cast.csv.bz2.pickle.gz', 'rb', compresslevel=1) as file:
+    with gzip.open('_cast.csv.bz2.pickle.gz', 'rb') as file:
         cast = pickle.load(file)
         
-    with gzip.open('_cast_names.csv.pickle.gz', 'rb', compresslevel=1) as file:
+    with gzip.open('_cast_names.csv.pickle.gz', 'rb') as file:
         cast_names = pickle.load(file)
 '''
 
