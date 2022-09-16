@@ -77,7 +77,7 @@ def _draw_cube(s: Series, color: Optional[Series] = None) -> str:
     # add axis
     x_pos = -70 - (len(zs) - 1) * 15 - 7.5, len(ys) / 2 * 40 + (len(zs) - 1) * 10 - 5
     y_pos = -len(xs) * 22 - (len(zs) - 1) * 15 - 70 - 10, (len(zs) - 1) / 2 * 7.5
-    z_pos = -70 + len(xs) / 2 * 30 + (len(zs) - 1) / 2 * 5 + 25, len(ys) * 22 - (len(zs) - 1) / 2 * 11 - 5
+    z_pos = -70 + len(xs) / 2 * 44 + 5, len(ys) / 2 * 44 - 22 + 3
 
     axis_html = f'''
         <div class="axis x" style="left: calc(50% + {x_pos[0]}px); top: calc(50% + {x_pos[1]}px + 15px)">
@@ -207,7 +207,7 @@ CSS = '''
 }
 
 .olap-cube .z {
-    transform: rotate3d(0.5, 0.5, -1, 45deg)
+    transform: rotate3d(0, 1, -1, 45deg)
 }
 '''
 

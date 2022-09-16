@@ -41,14 +41,14 @@ def post():
 
 
 # Aufgabe 1
-@JPTest('Aufgabe 1', max_score=1, execute=[imports, ('task-1',)], timeout=300)
+@JPTest('Aufgabe 1', max_score=1, execute=[imports, ('task-1',)], timeout=180)
 def aufgabe1(tb: JPTestBook):
     result = tb.get('G')
     test = tb.inject('''
         G = nx.read_edgelist('movie_graph.csv', data=False, delimiter=',')
     ''', 'G')
 
-    yield tb.ref('nx').is_isomorphic(test, result), 1
+    yield tb.ref('nx').could_be_isomorphic(test, result), 1
 
 
 # Aufgabe 2.1
