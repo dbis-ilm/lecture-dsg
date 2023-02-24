@@ -1,21 +1,26 @@
-from jptest import *
+import asyncio
+
+from jptest2 import *
 
 
 @JPTest('Aufgabe 1', max_score=2, execute=('task-1',))
-def aufgabe1(tb: JPTestBook):
-    sort = tb.ref('sort')
-    yield all([
-        sort(11, 12, 13) == [11, 12, 13],
-        sort(11, 13, 12) == [11, 12, 13],
-        sort(12, 11, 13) == [11, 12, 13],
-        sort(12, 13, 11) == [11, 12, 13],
-        sort(13, 11, 12) == [11, 12, 13],
-        sort(13, 12, 11) == [11, 12, 13]
-    ]), 2
+async def aufgabe1(nb: Notebook):
+    sort = nb.ref('sort')
+
+    vals = await asyncio.gather(
+        sort(11, 12, 13).receive(),
+        sort(11, 13, 12).receive(),
+        sort(12, 11, 13).receive(),
+        sort(12, 13, 11).receive(),
+        sort(13, 11, 12).receive(),
+        sort(13, 12, 11).receive()
+    )
+
+    yield all([v == (11, 12, 13) for v in vals]), 2
 
 
 @JPTest('Aufgabe 2', max_score=5, execute=('task-2',))
-def aufgabe2(tb: JPTestBook):
+async def aufgabe2(nb: Notebook):
     def test(station1, station2):
         # Sonderfälle
         if station1 > station2:
@@ -54,10 +59,10 @@ def aufgabe2(tb: JPTestBook):
         # Preis zurückgeben
         return price
 
-    result = tb.ref('price')
+    result = nb.ref('price')
 
     stations = [11, 12, 13, 21, 22, 23, 31, 32, 33]
     for s1 in stations:
         for s2 in stations:
             if s1 != 33 or s2 != 33:
-                yield test(s1, s2) == result(s1, s2), 0.0625
+                yield test(s1, s2) == await result(s1, s2).receive(), 0.0625

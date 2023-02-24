@@ -1,30 +1,39 @@
-from jptest import *
+from jptest2 import *
 
 
 # Aufgabe 1
+def to_list(fun, *args):
+    return list(fun(*args))
+
+
+def check_for_generator(fun):
+    from types import GeneratorType
+    return callable(fun) and isinstance(fun(1024), GeneratorType)
+
+
 @JPTest('Aufgabe 1', max_score=2, execute=('task-1',))
-def aufgabe1(tb: JPTestBook):
-    isgenerator = tb.inject('''
-        from types import GeneratorType
-        isgenerator = callable(even) and isinstance(even(1024), GeneratorType)
-    ''', 'isgenerator')
+async def aufgabe1(nb: Notebook):
+    cfg = await nb.inject_fun(check_for_generator)
+    tl = await nb.inject_fun(to_list)
+    even_ref = nb.ref('even')
+
+    isgenerator = await cfg(even_ref).receive()
     yield isgenerator, 1
 
-    result = tb.inject('result = list(even(15))', 'result')
+    result = await tl(even_ref, 15).receive()
     yield result == list(range(0, 15, 2)), 0.5
 
-    result = tb.inject('result = list(even(1025))', 'result')
+    result = await tl(even_ref, 1025).receive()
     yield result == list(range(0, 1025, 2)), 0.5
 
 
 # Aufgabe 2
-@JPTest('Aufgabe 2', max_score=1, execute=[
-    '''
+def solution():
     def even(i):
         return range(1, i, 3)
-    ''',
-    ('task-2',)
-])
-def aufgabe2(tb: JPTestBook):
-    result = tb.get('even_list')
+
+
+@JPTest('Aufgabe 2', max_score=1, execute=[solution, ('task-2',)])
+async def aufgabe2(nb: Notebook):
+    result = await nb.ref('even_list').receive()
     yield result == list(range(1, 256, 3)), 1

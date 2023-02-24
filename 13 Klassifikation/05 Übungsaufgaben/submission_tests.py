@@ -1,33 +1,43 @@
+import asyncio
 import os
+import random
 
+import numpy as np
 import pandas as pd
-from jptest import *
+from jptest2 import *
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
+from sklearn.tree import DecisionTreeClassifier
+
 
 # Vorbereitungen
-imports = '''
+# noinspection PyUnresolvedReferences
+def imports():
     import pandas as pd
-    
+
     import numpy as np
     import random
-    
+
     from sklearn.model_selection import train_test_split
     from sklearn.neighbors import KNeighborsClassifier
     from sklearn.tree import DecisionTreeClassifier
     from sklearn.metrics import accuracy_score, precision_score, recall_score
-'''
-load_data = '''
+
+
+def load_pickle():
     df = pd.read_pickle("df.pickle")
     df_train, df_test = train_test_split(df, test_size=0.25)
-'''
-init_rnd = '''
+
+
+def init_rnd():
     np.random.seed(14884)
     random.seed(14885)
-'''
 
 
 @JPPreRun
-def pre():
+async def pre():
     # lesen
     df: pd.DataFrame = pd.read_csv('classification_movies.csv')
 
@@ -43,127 +53,158 @@ def pre():
 
 
 @JPPostRun
-def post():
+async def post():
     if os.path.exists('df.pickle'):
         os.remove('df.pickle')
 
 
 # Aufgabe 1
-@JPTest('Aufgabe 1', max_score=2, execute=[imports, init_rnd, load_data, ('task-1',)])
-def aufgabe1(tb: JPTestBook):
-    df_result, df_train_result, df_test_result = tb.get('df', 'df_train', 'df_test')
+def aufgabe1_solution():
+    df = pd.read_csv('classification_movies.csv')
+    df_train, df_test = train_test_split(df, test_size=0.25)
 
-    tb.inject(init_rnd)
-    tb.inject(load_data)
-    df_test, df_train_test, df_test_test = tb.inject('''
-        df = pd.read_csv('classification_movies.csv')
-        df_train, df_test = train_test_split(df, test_size=0.25)
-    ''', 'df', 'df_train', 'df_test')
 
-    yield df_test.equals(df_test), 1
-    yield df_train_test.equals(df_train_result), 0.5
-    yield df_test_test.equals(df_test_result), 0.5
+@JPTestComparison('Aufgabe 1', max_score=2,
+                  prepare=[imports, init_rnd, load_pickle],
+                  execute_left=('task-1',), hold_left=['df', 'df_train', 'df_test'],
+                  execute_right=aufgabe1_solution, hold_right=['df', 'df_train', 'df_test'])
+async def aufgabe1(result_df, result_df_train, result_df_test, test_df, test_df_train, test_df_test):
+    yield test_df.equals(result_df), 1
+    yield test_df_train.equals(result_df_train), 0.5
+    yield test_df_test.equals(result_df_test), 0.5
 
 
 # Aufgabe 2
-solution2 = '''
+def aufgabe2_solution(df_train: pd.DataFrame, df_test: pd.DataFrame, n_neighbors: int):
     X, y = df_train.drop('popular', axis=1), df_train['popular']
-    nn = KNeighborsClassifier(n_neighbors=%d).fit(X, y)
+    nn = KNeighborsClassifier(n_neighbors=n_neighbors).fit(X, y)
     nn_accuracy = accuracy_score(df_test['popular'], nn.predict(df_test.drop('popular', axis=1)))
-'''
 
 
-@JPTest('Aufgabe 2', max_score=2, execute=[imports, init_rnd, load_data, ('task-2',)])
-def aufgabe2(tb: JPTestBook):
-    nn_result, nn_acc_result = tb.get('nn', 'nn_accuracy')
-    n_neighbors = tb.inject('n_neighbors = int(nn.n_neighbors)', 'n_neighbors')
+@JPTest('Aufgabe 2', max_score=2, execute=[imports, init_rnd, load_pickle], prepare_second=True)
+async def aufgabe2(left: Notebook, right: Notebook):
+    # result
+    await left.execute_cells('task-2')
+    result_nn = left.ref('nn')
 
-    tb.inject(init_rnd)
-    tb.inject(load_data)
+    n_neighbors = await result_nn.n_neighbors.receive()
 
-    nn_test, nn_acc_test = tb.inject(solution2 % n_neighbors, 'nn', 'nn_accuracy')
+    # test
+    await right.store('n_neighbors', n_neighbors)
+    await right.execute_fun(aufgabe2_solution)
 
-    # Vorhersagen vergleichen
-    df_test = tb.ref('df_test').drop('popular', axis=1)
+    test_nn = right.ref('nn')
 
-    pred_result = nn_result.predict(df_test)
-    pred_test = nn_test.predict(df_test)
+    # compare predictions
+    async def predict(nb: Notebook, nn: KNeighborsClassifier):
+        df_test_y = await nb.ref('df_test').drop('popular', axis=1)
+        prediction = await nn.predict(df_test_y)
+        return await prediction.receive()
 
-    yield tb.ref('np').array_equal(pred_test, pred_result), 1
+    result_pred, test_pred = await asyncio.gather(
+        predict(left, result_nn),
+        predict(right, test_nn)
+    )
 
-    # Accuracy vergleichen
-    yield abs(nn_acc_test - nn_acc_result) < 1e-6, 1
+    yield np.array_equal(test_pred, result_pred), 1
+
+    # compare accuracy
+    result_accuracy, test_accuracy = await asyncio.gather(
+        left.ref('nn_accuracy').receive(),
+        right.ref('nn_accuracy').receive()
+    )
+
+    yield abs(test_accuracy - result_accuracy) < 1e-6, 1
 
 
 # Aufgabe 3
-solution3 = '''
-    X, y = df_train.drop('popular', axis=1), df_train['popular']
-    tree = DecisionTreeClassifier().fit(X, y)
-    tree_accuracy = accuracy_score(df_test['popular'], tree.predict(df_test.drop('popular', axis=1)))
-'''
+def aufgabe3_solution(df_train: pd.DataFrame, df_test: pd.DataFrame):
+    train_X, train_y = df_train.drop('popular', axis=1), df_train['popular']
+    test_X, test_y = df_test.drop('popular', axis=1), df_test['popular']
+
+    tree = DecisionTreeClassifier().fit(train_X, train_y)
+    tree_prediction = tree.predict(test_X)
+    tree_accuracy = accuracy_score(test_y, tree_prediction)
 
 
-@JPTest('Aufgabe 3', max_score=2, execute=[imports, init_rnd, load_data, ('task-3',)])
-def aufgabe3(tb: JPTestBook):
-    tree_result, tree_acc_result = tb.get('tree', 'tree_accuracy')
+@JPTest('Aufgabe 3', max_score=2, execute=[imports, init_rnd, load_pickle], prepare_second=True)
+async def aufgabe3(left: Notebook, right: Notebook):
+    # execute user code and sample solution
+    async def result():
+        await left.execute_cells('task-3')
 
-    tb.inject(init_rnd)
-    tb.inject(load_data)
+        tree = left.ref('tree')
+        acc = left.ref('tree_accuracy')
 
-    tree_test, tree_acc_test = tb.inject(solution3, 'tree', 'tree_accuracy')
+        df_test_y = await left.ref('df_test').drop('popular', axis=1)
+        prediction = await tree.predict(df_test_y)
 
-    # Vorhersagen vergleichen
-    df_test = tb.ref('df_test').drop('popular', axis=1)
+        return await asyncio.gather(
+            prediction.receive(),
+            acc.receive()
+        )
 
-    pred_result = tree_result.predict(df_test)
-    pred_test = tree_test.predict(df_test)
+    async def test():
+        await right.execute_fun(aufgabe3_solution)
 
-    yield tb.ref('np').array_equal(pred_test, pred_result), 1
+        return await asyncio.gather(
+            right.ref('tree_prediction').receive(),
+            right.ref('tree_accuracy').receive()
+        )
 
-    # Accuracy vergleichen
-    yield abs(tree_acc_test - tree_acc_result) < 1e-6, 1
+    (result_pred, result_acc), (test_pred, test_acc) = await asyncio.gather(result(), test())
+
+    # compare predictions
+    yield np.array_equal(test_pred, result_pred), 1
+
+    # compare accuracy
+    yield abs(test_acc - result_acc) < 1e-6, 1
 
 
 # Aufgabe 4
-define_new = '''
+def aufgabe4_preparation():
     df_new = pd.DataFrame({'budget': [1145774, 14145774],
                            'countries': [1, 2],
                            'runtime': [88, 109],
                            'cast_size': [128, 38],
                            'crew_size': [16, 136],
                            'cast_vote_avg': [4.8, 6.8]})
-'''
 
 
-@JPTest('Aufgabe 4', max_score=2, execute=[imports, init_rnd, load_data,
-                                           solution2 % 5, solution3,
-                                           define_new, ('task-4',)])
-def aufgabe4(tb: JPTestBook):
-    nn_result, tree_result = tb.get('nn_prediction', 'tree_prediction')
+def aufgabe4_solution(nn, tree, df_new):
+    nn_prediction = nn.predict(df_new)
+    tree_prediction = tree.predict(df_new)
 
-    tb.execute([imports, init_rnd, load_data, solution2 % 5, solution3, define_new])
-    nn_test, tree_test = tb.inject('''
-        nn_prediction = nn.predict(df_new)
-        tree_prediction = tree.predict(df_new)
-    ''', 'nn_prediction', 'tree_prediction')
 
-    yield tb.ref('np').array_equal(nn_test, nn_result), 1
-    yield tb.ref('np').array_equal(tree_test, tree_result), 1
+@JPTestComparison('Aufgabe 4', max_score=2,
+                  prepare=[imports, init_rnd, load_pickle,
+                           'n_neighbors=5', aufgabe2_solution,
+                           aufgabe3_solution,
+                           aufgabe4_preparation],
+                  execute_left=('task-4',), hold_left=['nn_prediction', 'tree_prediction'],
+                  execute_right=aufgabe4_solution, hold_right=['nn_prediction', 'tree_prediction'])
+async def aufgabe4(result_nn, result_tree, test_nn, test_tree):
+    yield np.array_equal(test_nn, result_nn), 1
+    yield np.array_equal(test_tree, result_tree), 1
 
 
 # Aufgabe 5
-@JPTest('Aufgabe 5', max_score=2, execute=[imports, init_rnd, load_data, solution2 % 5, solution3, ('task-5',)])
-def aufgabe5(tb: JPTestBook):
-    nn_p_r, nn_r_r, tree_p_r, tree_r_r = tb.get('nn_precision', 'nn_recall', 'tree_precision', 'tree_recall')
+def aufgabe5_solution(nn, tree, df_test):
+    nn_precision = precision_score(df_test['popular'], nn.predict(df_test.drop('popular', axis=1)))
+    nn_recall = recall_score(df_test['popular'], nn.predict(df_test.drop('popular', axis=1)))
+    tree_precision = precision_score(df_test['popular'], tree.predict(df_test.drop('popular', axis=1)))
+    tree_recall = recall_score(df_test['popular'], tree.predict(df_test.drop('popular', axis=1)))
 
-    tb.execute([imports, init_rnd, load_data, solution2 % 5, solution3])
-    nn_p_t, nn_r_t, tree_p_t, tree_r_t = tb.inject('''
-        nn_precision = precision_score(df_test['popular'], nn.predict(df_test.drop('popular', axis=1)))
-        nn_recall = recall_score(df_test['popular'], nn.predict(df_test.drop('popular', axis=1)))
-        tree_precision = precision_score(df_test['popular'], tree.predict(df_test.drop('popular', axis=1)))
-        tree_recall = recall_score(df_test['popular'], tree.predict(df_test.drop('popular', axis=1)))
-    ''', 'nn_precision', 'nn_recall', 'tree_precision', 'tree_recall')
 
+@JPTestComparison('Aufgabe 5', max_score=2,
+                  prepare=[imports, init_rnd, load_pickle,
+                           'n_neighbors=5', aufgabe2_solution,
+                           aufgabe3_solution],
+                  execute_left=('task-5',),
+                  hold_left=['nn_precision', 'nn_recall', 'tree_precision', 'tree_recall'],
+                  execute_right=aufgabe5_solution,
+                  hold_right=['nn_precision', 'nn_recall', 'tree_precision', 'tree_recall'])
+async def aufgabe5(nn_p_r, nn_r_r, tree_p_r, tree_r_r, nn_p_t, nn_r_t, tree_p_t, tree_r_t):
     yield abs(nn_p_r - nn_p_t) < 1e-6, 0.5
     yield abs(nn_r_r - nn_r_t) < 1e-6, 0.5
     yield abs(tree_p_r - tree_p_t) < 1e-6, 0.5

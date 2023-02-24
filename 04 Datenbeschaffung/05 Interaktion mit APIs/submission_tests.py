@@ -1,36 +1,32 @@
-from jptest import *
-
-imports = 'import requests'
+from jptest2 import *
 
 
-@JPTest('Aufgabe 1', max_score=1, execute=[imports, ('task-1',)])
-def task1(tb: JPTestBook):
-    result = tb.get('starships')
-
-    yield all([
-        len(result) == 5,
-        'https://swapi.dev/api/starships/31/' in result,
-        'https://swapi.dev/api/starships/32/' in result,
-        'https://swapi.dev/api/starships/39/' in result,
-        'https://swapi.dev/api/starships/40/' in result,
-        'https://swapi.dev/api/starships/41/' in result
-    ]), 1
+# noinspection PyUnresolvedReferences
+def imports():
+    import requests
 
 
-@JPTest('Aufgabe 2', max_score=1, execute=[
-    imports,
-    '''
+def starships():
     starships = ['https://swapi.dev/api/starships/31/',
                  'https://swapi.dev/api/starships/32/',
                  'https://swapi.dev/api/starships/39/',
                  'https://swapi.dev/api/starships/40/',
                  'https://swapi.dev/api/starships/41/']
-    ''',
-    ('task-2',)
-])
-def task2(tb: JPTestBook):
-    result = tb.get('starship_names')
+    return starships
 
+
+# Aufgabe 1
+@JPTestGet('Aufgabe 1', max_score=1, execute=[imports, ('task-1',)], get='starships')
+async def task1(result):
+    yield all([
+        len(result) == 5,
+        *[s in result for s in starships()]
+    ]), 1
+
+
+# Aufgabe 2
+@JPTestGet('Aufgabe 2', max_score=1, execute=[imports, starships, ('task-2',)], get='starship_names')
+async def task2(result):
     yield all([
         len(result) == 5,
         'Republic Cruiser' in result,

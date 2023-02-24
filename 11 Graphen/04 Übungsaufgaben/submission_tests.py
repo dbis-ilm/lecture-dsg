@@ -3,23 +3,26 @@ import os
 import pickle
 
 import networkx as nx
-from jptest import *
+from jptest2 import *
+from networkx.algorithms import clique
+
 
 # Vorbereitungen
-imports = '''
+# noinspection PyUnresolvedReferences
+def imports():
     import networkx as nx
     from networkx import community, clique
-    
+
     import pickle
-'''
-load_graph = '''
+
+
+def load_pickle():
     with open('graph.pickle', 'rb') as file:
         G = pickle.load(file)
-'''
 
 
 @JPPreRun
-def pre():
+async def pre():
     # read data
     G = nx.Graph()
 
@@ -35,96 +38,100 @@ def pre():
 
 
 @JPPostRun
-def post():
+async def post():
     if os.path.exists('graph.pickle'):
         os.remove('graph.pickle')
 
 
 # Aufgabe 1
-@JPTest('Aufgabe 1', max_score=1, execute=[imports, ('task-1',)], timeout=180)
-def aufgabe1(tb: JPTestBook):
-    result = tb.get('G')
-    test = tb.inject('''
-        G = nx.read_edgelist('movie_graph.csv', data=False, delimiter=',')
-    ''', 'G')
+def aufgabe1_solution():
+    G = nx.read_edgelist('movie_graph.csv', data=False, delimiter=',')
 
-    yield tb.ref('nx').could_be_isomorphic(test, result), 1
+
+@JPTestComparison('Aufgabe 1', max_score=1,
+                  prepare=imports,
+                  execute_left=('task-1',), hold_left='G',
+                  execute_right=aufgabe1_solution, hold_right='G')
+async def aufgabe1(result, test):
+    yield nx.could_be_isomorphic(test, result), 1
 
 
 # Aufgabe 2.1
-@JPTest('Aufgabe 2.1', max_score=1, execute=[imports, load_graph, ('task-2-1',)])
-def aufgabe2_1(tb: JPTestBook):
-    result = tb.get('density')
+def aufgabe2_1_solution(G: nx.Graph):
+    density = nx.density(G)
 
-    tb.inject(load_graph)
-    test = tb.inject('''
-        density = nx.density(G)
-    ''', 'density')
 
+@JPTestComparison('Aufgabe 2.1', max_score=1,
+                  prepare=[imports, load_pickle],
+                  execute_left=('task-2-1',), hold_left='density',
+                  execute_right=aufgabe2_1_solution, hold_right='density')
+async def aufgabe2_1(result, test):
     yield abs(test - result) < 1e-6, 1
 
 
 # Aufgabe 2.2
-@JPTest('Aufgabe 2.2', max_score=1, execute=[imports, load_graph, ('task-2-2',)])
-def aufgabe2_2(tb: JPTestBook):
-    yield tb.ref('cc') is False, 1
+@JPTest('Aufgabe 2.2', max_score=1, execute=[imports, load_pickle, ('task-2-2',)])
+async def aufgabe2_2(nb: Notebook):
+    yield await nb.ref('cc').receive() is False, 1
 
 
 # Aufgabe 2.3
-@JPTest('Aufgabe 2.3', max_score=1, execute=[imports, load_graph, ('task-2-3',)])
-def aufgabe2_3(tb: JPTestBook):
-    result = tb.get('shortest_path')
+def aufgabe2_3_solution(G: nx.Graph):
+    shortest_path = nx.shortest_path(
+        G,
+        source='Mickey Mouse',
+        target='Star Wars: Episode III - Revenge of the Sith'
+    )
 
-    tb.inject(load_graph)
-    test = tb.inject('''
-        shortest_path = nx.shortest_path(G,
-                                         source='Mickey Mouse',
-                                         target='Star Wars: Episode III - Revenge of the Sith')
-    ''', 'shortest_path')
 
+@JPTestComparison('Aufgabe 2.3', max_score=1,
+                  prepare=[imports, load_pickle],
+                  execute_left=('task-2-3',), hold_left='shortest_path',
+                  execute_right=aufgabe2_3_solution, hold_right='shortest_path')
+async def aufgabe2_3(result, test):
     yield test == result, 1
 
 
 # Aufgabe 2.4
-@JPTest('Aufgabe 2.4', max_score=1, execute=[imports, load_graph, ('task-2-4',)])
-def aufgabe2_4(tb: JPTestBook):
-    result = tb.get('max_degree_node')
+def aufgabe2_4_solution(G: nx.Graph):
+    max_degree_node, degree = max(nx.degree(G), key=lambda x: x[1])
 
-    tb.inject(load_graph)
-    test = tb.inject('''
-        max_degree_node, degree = max(nx.degree(G), key=lambda x: x[1])
-    ''', 'max_degree_node')
 
+@JPTestComparison('Aufgabe 2.4', max_score=1,
+                  prepare=[imports, load_pickle],
+                  execute_left=('task-2-4',), hold_left='max_degree_node',
+                  execute_right=aufgabe2_4_solution, hold_right='max_degree_node')
+async def aufgabe2_4(result, test):
     yield test == result, 1
 
 
 # Aufgabe 2.5
-@JPTest('Aufgabe 2.5', max_score=1, execute=[imports, load_graph, ('task-2-5',)])
-def aufgabe2_5(tb: JPTestBook):
-    result = tb.get('max_pagerank_node')
+def aufgabe2_5_solution(G: nx.Graph):
+    max_pagerank_node, pagerank = max(nx.pagerank(G).items(), key=lambda x: x[1])
 
-    tb.inject(load_graph)
-    test = tb.inject('''
-        max_pagerank_node, pagerank = max(nx.pagerank(G).items(), key=lambda x: x[1])
-    ''', 'max_pagerank_node')
 
-    print(test)
-    print(result)
-
+@JPTestComparison('Aufgabe 2.5', max_score=1,
+                  prepare=[imports, load_pickle],
+                  execute_left=('task-2-5',), hold_left='max_pagerank_node',
+                  execute_right=aufgabe2_5_solution, hold_right='max_pagerank_node')
+async def aufgabe2_5(result, test):
     yield test == result, 1
 
 
 # Aufgabe 2.6
-@JPTest('Aufgabe 2.6', max_score=1, execute=[imports, load_graph, ('task-2-6',)])
-def aufgabe2_6(tb: JPTestBook):
-    result = tb.get('max_clique')
+def aufgabe2_6_solution(G: nx.Graph):
+    max_clique = max(clique.find_cliques(G), key=len)
 
-    tb.inject(load_graph)
-    test = tb.inject('''
-        max_clique = max(clique.find_cliques(G), key=len)
-    ''', 'max_clique')
 
-    yield test == result, 1
+@JPTestComparison('Aufgabe 2.6', max_score=1,
+                  prepare=[imports, load_pickle],
+                  execute_left=('task-2-6',), hold_left='max_clique',
+                  execute_right=aufgabe2_6_solution, hold_right='max_clique')
+async def aufgabe2_6(result, test):
+    if not isinstance(result, list):
+        yield False, 0, 'max_clique ist keine Clique'
+    else:
+        yield [t in result for t in test], 1
 
 
 # Mapping
