@@ -1,0 +1,271 @@
+\documentclass[t,unknownkeysallowed,handout%
+]{beamer}
+
+%\includeonly{stream}
+\mode<presentation>
+
+\usetheme[
+  outer/progressbar=none,
+  color/block=fill,
+  inner/sectionpage=simple
+  ]
+  {metropolis}
+
+
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage[official,right]{eurosym}
+\usepackage{ifthen}
+\usepackage{pgf}
+\usepackage{alltt}
+% \usepackage[scaled=.85]{luximono}
+%\usefonttheme[onlymath]{serif}
+\usepackage[ngerman]{datetime}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{makecell}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% some macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{structure}{rgb}{0.1,0.1,0.7}
+\definecolor{azureblue}{rgb}{0.0, 0.5, 1.0}
+\definecolor{Gray}{gray}{0.85}
+
+\newcommand{\settabs}{12\= 12\= 12\= 12\= 12\= 12\= 12\=
+  123\= 123\= 123\= 123\= 123\= 123\= \kill}
+
+\newcommand{\1}{\>}
+\newcommand{\2}{\> \>}
+\newcommand{\3}{\> \> \>}
+\newcommand{\4}{\> \> \> \>}
+\newcommand{\5}{\> \> \> \> \>}
+\newcommand{\6}{\> \> \> \> \> \>}
+
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\newcommand{\prompt}[1]{{\color{darkgreen}#1}}
+\newcommand{\pycomment}[1]{\color{darkgray}\textit{\# #1}}
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\setbeamertemplate{frame numbering}{\insertpartnumber{}--\insertframenumber{}}
+\setbeamertemplate{part page}{
+\setcounter{framenumber}{0}
+\begin{centering}
+  {\usebeamerfont{part name}\usebeamercolor[fg]{part
+  name}\partname~\insertromanpartnumber}
+\vskip1em\par
+\begin{beamercolorbox}[sep=8pt,center]{part title}
+  \usebeamerfont{part title}\insertpart\par
+\end{beamercolorbox}
+\end{centering}
+}
+
+\setbeamercolor{algo color}{fg=black,bg=structure.fg!15!white}%
+
+\newenvironment{algo}{%
+  \bgroup\small\ttfamily
+%  \fontfamily{pfr}\fontseries{mc}\selectfont
+    \hspace*{.5cm}%
+  \begin{beamercolorbox}%
+[sep=4pt,colsep*=5pt,shadow=false,rounded=false]{algo color}%
+    \begin{minipage}{10cm}
+    \begin{tabbing}%
+    \settabs}
+  {\end{tabbing}\end{minipage}\end{beamercolorbox}\egroup}%
+
+\newenvironment{smallalgo}{%
+  \bgroup\scriptsize\ttfamily
+%  \fontfamily{pfr}\fontseries{mc}\selectfont
+    \hspace*{.5cm}%
+  \begin{beamercolorbox}%
+[sep=4pt,colsep*=5pt,shadow=false,rounded=false]{algo color}%
+    \begin{minipage}{10cm}
+    \begin{tabbing}%
+    \settabs}
+  {\end{tabbing}\end{minipage}\end{beamercolorbox}\egroup}%
+
+\newenvironment{sql}{%
+  \bgroup\small\ttfamily
+%  \fontfamily{pfr}\fontseries{mc}\selectfont
+    \hspace*{.5cm}%
+  \begin{beamercolorbox}%
+[sep=4pt,colsep*=5pt,shadow=false,rounded=false]{algo color}%
+    \begin{minipage}{10cm}
+    \begin{tabbing}%
+    \settabs}
+  {\end{tabbing}\end{minipage}\end{beamercolorbox}\egroup}%
+
+\newenvironment{python}{%
+  \bgroup\footnotesize\ttfamily
+%  \fontfamily{pfr}\fontseries{mc}\selectfont
+    \hspace*{.5cm}%
+  \begin{beamercolorbox}%
+[sep=4pt,colsep*=5pt,shadow=false,rounded=false]{algo color}%
+    \begin{minipage}{10cm}
+    \begin{tabbing}%
+    \settabs}
+  {\end{tabbing}\end{minipage}\end{beamercolorbox}\egroup}%
+
+\setbeamercolor{wichtig}{fg=blue,bg=structure.fg!20!white}
+
+\newenvironment{notebox}{%
+\begin{beamercolorbox}[sep=4pt,colsep*=5pt,shadow=false,rounded=false]{wichtig}}%
+{\end{beamercolorbox}}
+
+\newcommand{\jcomment}[1]{\color{structure}#1}
+\newcommand{\op}[1]{\texttt{\textbf{#1}}}
+% \newcommand{\op}[1]{%
+% \fontfamily{pfr}\selectfont\underline{\textbf{#1}}}
+
+\newcommand{\hl}[1]{{\color{blue}{\textbf{#1}}}}
+
+\newcommand{\dist}{\operatorname{dist}}
+
+\AtBeginDocument{\selectlanguage{ngerman}}
+\newdateformat{mydate}{\monthname[\THEMONTH] \THEYEAR}
+
+\AtBeginDocument{\mydate}
+
+\title{VL Data Science -- Grundlagen}
+\subtitle{Sommersemester 2023}
+\author[\copyright~Sattler]{Prof. Dr.-Ing. Kai-Uwe Sattler}
+\institute[]{TU Ilmenau\\FG Datenbanken \& Informationssysteme}
+\date{Letzte {\"A}nderung: März 2023}
+
+\setbeamertemplate{frame footer}{Sattler | VL Data Science I | \today}
+\setbeamertemplate{section in toc}[sections numbered]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\frame[plain]{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{part}{0}%
+
+\include{org}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Einführung: Was ist Data Science?}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+
+ \tableofcontents[pausesections,hidesubsections]
+
+}
+
+\include{intro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Datenanalyse: Daten, Prozess, Aufgaben}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+  \tableofcontents[pausesections,hidesubsections,firstsection=5]
+
+}
+
+\include{prozess}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Werkzeuge zur Datananalyse: SQL, Python, Jupyter}
+
+\frame[plain,c]{\partpage}
+
+%\include{dw}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Datenbeschaffung, -vorbereitung und -bereinigung}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+  \tableofcontents[pausesections,hidesubsections,firstsection=8]
+}
+
+\include{preparation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\part{Datenvisualisierung}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+  \tableofcontents[pausesections,hidesubsections,firstsection=21]
+}
+
+%\include{graphmining}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Data Warehousing und OLAP}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+  \tableofcontents[pausesections,hidesubsections,firstsection=27]
+}
+
+%\include{spatiotemporal}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Ausgewählte Analyseverfahren: Regression, Klassifikation, Clustering}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+  \tableofcontents[pausesections,hidesubsections,firstsection=33]
+}
+
+%\include{textmining}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Analyse von Graphen}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+  \tableofcontents[pausesections,hidesubsections,firstsection=33]
+}
+
+%\include{textmining}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Textanalyse}
+
+\frame[plain,c]{\partpage}
+
+\frame{
+  \frametitle{Überblick}
+  \tableofcontents[pausesections,hidesubsections,firstsection=33]
+}
+
+%\include{textmining}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
