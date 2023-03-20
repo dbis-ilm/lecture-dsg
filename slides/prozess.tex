@@ -217,6 +217,130 @@ ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGG
 
 %---------------------------------------------------------------------
 
+\section{Datenformate}
+
+\begin{frame}
+\frametitle{Datenformate}
+
+\begin{itemize}
+\item Kodierung von Daten mit mehreren Attributen
+\item Zweck: Persistente Speicherung, Senden über das Netzwerk
+\item Unterscheidung in textbasierte (menschenlesbare) und binäre Formate
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Datenformate: CSV}
+
+\begin{itemize}
+\item \alert{C}omma-\alert{S}eparated \alert{V}alues
+\item Daten lassen sich als Tabelle darstellen
+\end{itemize}
+
+\begin{lstlisting}
+title,release_year
+Duck the Halls: A Mickey Mouse Christmas Special,2016
+Ernest Saves Christmas,1988
+"Dr. Oakley, Yukon Vet",2013
+\end{lstlisting}
+
+\begin{itemize}
+\item Trennung der Daten durch festgelegtes Zeichen (\code{\textbackslash{}n})
+\item Trennung der Attribute durch anderes Zeichen (\code{,} \code{;} \code{\textbackslash{}t})
+\item erste Zeile häufig für Namen der Attribute verwendet
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Datenformate: JSON}
+
+\begin{itemize}
+\item \alert{J}ava\alert{S}cript \alert{O}bject \alert{N}otation
+\item aus JavaScript Syntax entstanden
+\item Parser für viele Sprachen verfügbar
+\item Darstellung durch verschachtelte Objekte und Listen
+\end{itemize}
+
+\begin{lstlisting}[basicstyle=\tiny\ttfamily]
+[
+    {
+        "title": "Duck the Halls: A Mickey Mouse Christmas Special",
+        "cast": [
+            "Chris Diamantopoulos",
+            "Tony Anselmo",
+            "Tress MacNeille",
+            "Bill Farmer",
+            "Russi Taylor",
+            "Corey Burton"
+        ]
+    },
+    {
+        ...
+    }
+]
+\end{lstlisting}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Datenformate: JSON}
+
+\begin{itemize}
+\item Das Dokument ist ein Objekt oder eine Liste.
+\item Objekte werden von \code{\{\}} umschlossen und enthalten Schlüssel-Wert-Paare.
+\item Listen werden von \code{[]} umschlossen und enthalten Werte.
+\item Werte sind entweder primitive Datentypen oder selbst Objekte und Listen.
+\end{itemize}
+
+\begin{lstlisting}[basicstyle=\tiny\ttfamily]
+[{
+    "title": "Duck the Halls: A Mickey Mouse Christmas Special",
+    "cast": [
+        "Chris Diamantopoulos",
+        "Tony Anselmo"
+    ]
+}, {
+    ...
+}]
+\end{lstlisting}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\frametitle{Datenformate: Pickle}
+
+\begin{itemize}
+\item binäres Format
+\item nur in Python verfügbar!
+\end{itemize}
+
+Vorteile binärer Formate:
+\begin{itemize}
+\item geringerer Speicherplatzverbrauch
+\item schnelleres Serialisieren und Deserialisieren
+\end{itemize}
+
+Nachteile binärer Formate:
+\begin{itemize}
+\item strikte Einhaltung des Formats notwendig
+\item Sicherheitsbedenken bei Deserialisierung
+\item Ergebnisse nicht im Texteditor / optisch prüfbar
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
 \section{Der Data-Science-Prozess}
 
 \begin{frame}[c]
@@ -538,9 +662,17 @@ hinzufügen)
 
 \section{Data-Science-Aufgaben}
 
-
 \begin{frame}
-  \frametitle{Regression}
+\frametitle{Regression}
+
+\begin{itemize}
+\item Modellierung funktionaler Zusammenhänge zwischen unterschiedlichen Attributen
+\item Schätzung unbekannter Werte mit entstehendem Modell
+\end{itemize}
+
+\begin{center}
+\includegraphics[scale=0.4]{fig1/linear_regression.png}
+\end{center}
 
 \end{frame}
 

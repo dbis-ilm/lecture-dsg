@@ -27,6 +27,8 @@
 \usepackage{booktabs}
 \usepackage{makecell}
 
+\usepackage{listings}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% some macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{structure}{rgb}{0.1,0.1,0.7}
 \definecolor{azureblue}{rgb}{0.0, 0.5, 1.0}
@@ -46,6 +48,16 @@
 \newcommand{\prompt}[1]{{\color{darkgreen}#1}}
 \newcommand{\pycomment}[1]{\color{darkgray}\textit{\# #1}}
 
+\definecolor{light-gray}{gray}{0.95}
+\lstset{
+	basicstyle=\scriptsize\ttfamily,
+	numbers=left,
+	language=python,
+	frame=single,
+	frameround=tttt,
+	showstringspaces=false,
+	backgroundcolor=\color{light-gray}
+}
 
 \newcommand{\code}[1]{\texttt{#1}}
 
