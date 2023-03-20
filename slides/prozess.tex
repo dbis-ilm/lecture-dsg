@@ -591,65 +591,65 @@ Kunden-ID & Schulden & Einkommen & Anstellungs- & Kredit- \\
 
 %---------------------------------------------------------------------
 
-\begin{frame}
-\frametitle{Assoziationsregeln: Beispiel}
-
-\begin{itemize}
-  \item Aufdeckung statistischer Zusammenhänge zwischen Variablen
-  \item Modell: Assoziationsregeln oder "`Frequent Itemsets"'
-\item Beispiel: Warenkorbanalyse
-\end{itemize}
-
-\begin{center}
-\begin{tabular}{|c|l|}
-\rowcolor{Gray}\hline
-Transaktions-ID & Produkte \\
-\hline
-\hline
-1 & Milch, Butter \\
-2 & Milch, Honig, Butter \\
-3 & Milch, Brot, Butter \\
-4 & Milch, Brot, Honig \\
-\hline
-\end{tabular}
-\end{center}
-\end{frame}
+%\begin{frame}
+%\frametitle{Assoziationsregeln: Beispiel}
+%
+%\begin{itemize}
+%  \item Aufdeckung statistischer Zusammenhänge zwischen Variablen
+%  \item Modell: Assoziationsregeln oder "`Frequent Itemsets"'
+%\item Beispiel: Warenkorbanalyse
+%\end{itemize}
+%
+%\begin{center}
+%\begin{tabular}{|c|l|}
+%\rowcolor{Gray}\hline
+%Transaktions-ID & Produkte \\
+%\hline
+%\hline
+%1 & Milch, Butter \\
+%2 & Milch, Honig, Butter \\
+%3 & Milch, Brot, Butter \\
+%4 & Milch, Brot, Honig \\
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{frame}
 
 %---------------------------------------------------------------------
 
-\begin{frame}
-\frametitle{Assoziationsregeln: Beispiel /2}
-
-\begin{itemize}
-\item Frequent Itemsets
-
-{\small
-\begin{center}
-\begin{tabular}{|l|c|}
-  \rowcolor{Gray}\hline
-Produkte & Support \\
-\hline
-\hline
-\{ Milch \} & 4 \\
-\hline
-\{ Butter \}, & 3 \\
-\{ Milch, Butter \} & \\
-\hline
-\{ Honig \}, \{ Brot \}  & 2 \\
-\{ Honig, Milch \},
-\{ Brot, Milch \}  & \\
-\hline
-\end{tabular}\end{center}}
-
-\item Ableitung von Regeln:\\
-\fbox{\hl{Wenn ein Kunde Milch kauft, dann kauft er auch Butter.}}
-\begin{itemize}
-\item Unterstützung (Support): hier 3
-\item Konfidenz: hier 75\%
-\end{itemize}
-\end{itemize}
-
-\end{frame}
+%\begin{frame}
+%\frametitle{Assoziationsregeln: Beispiel /2}
+%
+%\begin{itemize}
+%\item Frequent Itemsets
+%
+%{\small
+%\begin{center}
+%\begin{tabular}{|l|c|}
+%  \rowcolor{Gray}\hline
+%Produkte & Support \\
+%\hline
+%\hline
+%\{ Milch \} & 4 \\
+%\hline
+%\{ Butter \}, & 3 \\
+%\{ Milch, Butter \} & \\
+%\hline
+%\{ Honig \}, \{ Brot \}  & 2 \\
+%\{ Honig, Milch \},
+%\{ Brot, Milch \}  & \\
+%\hline
+%\end{tabular}\end{center}}
+%
+%\item Ableitung von Regeln:\\
+%\fbox{\hl{Wenn ein Kunde Milch kauft, dann kauft er auch Butter.}}
+%\begin{itemize}
+%\item Unterstützung (Support): hier 3
+%\item Konfidenz: hier 75\%
+%\end{itemize}
+%\end{itemize}
+%
+%\end{frame}
 
 %---------------------------------------------------------------------
 
@@ -700,34 +700,34 @@ Alter & Einkommen \\
 
 %---------------------------------------------------------------------
 
-\begin{frame}
-\frametitle{Sequenzanalyse}
+% \begin{frame}
+% \frametitle{Sequenzanalyse}
 
-\begin{itemize}
-\item Suche nach häufig auftretenden Episoden oder Ereignisfolgen in
-  Datenbeständen mit (zeitlicher) Ordnung
-\begin{itemize}
-\item Menge von Ereignistypen $E$, Sequenz von Paaren $(e, t$) mit $e
-  \in E$ und $t$ ist Zeitstempel
-\item Episode $\alpha$: partielle Ordnung von Ereignistypen
-\item Häufigkeit einer Episode $\alpha$: Anzahl der Partition der
-  Sequenz einer vorgegebenen Länge mit den durch $\alpha$ gegebenen
-  Ereignistypen und deren Ordnung
-\end{itemize}
+% \begin{itemize}
+% \item Suche nach häufig auftretenden Episoden oder Ereignisfolgen in
+%   Datenbeständen mit (zeitlicher) Ordnung
+% \begin{itemize}
+% \item Menge von Ereignistypen $E$, Sequenz von Paaren $(e, t$) mit $e
+%   \in E$ und $t$ ist Zeitstempel
+% \item Episode $\alpha$: partielle Ordnung von Ereignistypen
+% \item Häufigkeit einer Episode $\alpha$: Anzahl der Partition der
+%   Sequenz einer vorgegebenen Länge mit den durch $\alpha$ gegebenen
+%   Ereignistypen und deren Ordnung
+% \end{itemize}
 
-\item Anwendungen
-\begin{itemize}
-\item Analyse von Alarmmeldungen (Events) in
-  Telekommunikationssystemen
-\item Web Usage Mining / Clickstream-Analyse
-\item (zeitliches) Kaufverhalten, z.B.
- "`Herr der Ringe (DVD)"'
-  $\longrightarrow$ "`Herr der Ringe (Buch)"' $\longrightarrow$
-  "`Silmarillion"'
-\end{itemize}
-\end{itemize}
+% \item Anwendungen
+% \begin{itemize}
+% \item Analyse von Alarmmeldungen (Events) in
+%   Telekommunikationssystemen
+% \item Web Usage Mining / Clickstream-Analyse
+% \item (zeitliches) Kaufverhalten, z.B.
+%  "`Herr der Ringe (DVD)"'
+%   $\longrightarrow$ "`Herr der Ringe (Buch)"' $\longrightarrow$
+%   "`Silmarillion"'
+% \end{itemize}
+% \end{itemize}
 
-\end{frame}
+% \end{frame}
 
 %---------------------------------------------------------------------
 
@@ -785,19 +785,14 @@ Alter & Einkommen \\
 \frametitle{Zusammenfassung}
 
 \begin{itemize}
-\item \hl{Grundlagen des Data-Science-Prozesses}
+\item \hl{Daten} als Analyseobjekte
+\item Grundlagen des \hl{Data-Science-Prozesses}
+\item typische \hl{Analyseaufgaben}
 \begin{itemize}
-\item Motivation
-\item mehrere Phasen und iteratives Vorgehen
-\end{itemize}
-\item \hl{Anwendungsfälle}
-\begin{itemize}
-\item Auswertung empirisch erfasster Daten
-\item Analyse betriebswirtschaftlicher Daten, wissenschaftlicher
-  Daten, Netzwerkdaten (Intrusion Detection, Web Mining, Web Log
-  Mining), \dots
-\item aber auch Textanalyse (Textklassifikation), Bildanalyse
-  (Clustering von Bildern), \dots
+\item Regression
+\item Klassifikation
+\item Clustering
+\item \dots
 \end{itemize}
 \end{itemize}
 
