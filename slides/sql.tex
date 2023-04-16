@@ -7,6 +7,26 @@
 \frame{
   \frametitle{Motivation}
 
+  \begin{itemize}
+    \item Datenanalyse erfordert
+  \begin{itemize}
+    \item Laden/Einlesen von Daten
+    \item Transformation, Auswahl, Verknüpfung, \dots
+    \item Berechnungen, Statistiken, \dots
+    \item \dots
+  \end{itemize}
+  \item \hl{Welches ist das geeignete Werkzeug?}
+  \end{itemize}
+
+  \begin{notebox}
+  Maslows Hammer: Wer als Werkzeug nur einen Hammer hat, sieht in jedem Problem einen Nagel.   
+  \end{notebox}
+
+  \begin{itemize}
+    \item R
+    \item \hl{Python + Pandas/scikit-learn/\dots}, \hl{SQL}
+    \item Apache Spark/Flink/\dots
+  \end{itemize}
   }
 
     %--------------------------------------------------------------
@@ -123,6 +143,20 @@
 
     \frametitle{DB-Import am Beispiel von PostgreSQL}
     
+    \begin{itemize}
+      \item proprietäres SQL-Kommando zum Kopieren von Daten  Tabelle $\leftrightarrow$ Datei
+      \item schneller als Folge von Inserts
+      \item Formate: Text, CSV, binär
+      \item Unterstützung von Header, Trennzeichen, Quotes
+      \item Datei muss vom DB-Server lokal erreichbar sein 
+      \item Beispiel: Import einer CSV-Datei mit Header
+    \end{itemize}
+
+    \begin{sql}    
+    COPY movies(title, year) \\
+    \1 FROM '/data/movies.csv' \\
+    \1 DELIMITER ',' CSV HEADER;
+    \end{sql}
 \end{frame}
 
 %--------------------------------------------------------------
@@ -937,7 +971,7 @@
     
     \begin{frame}
     
-    \frametitle{GROUPING SETS}
+    \frametitle{\op{GROUPING SETS}}
     
     \begin{sql}
         \textbf{GROUP BY} ... \textbf{GROUPING SETS}
@@ -990,7 +1024,7 @@
     
     \begin{frame}
     
-      \frametitle{Effekt von \op{GROUPING SETS}: Beispieldaten}
+      \frametitle{Effekt von GROUPING SETS: Beispieldaten}
     
       \begin{center}
       \begin{tabular}{|l|l|l|r|}
@@ -1013,7 +1047,7 @@
     
     \begin{frame}
     
-      \frametitle{Effekt von \op{GROUPING SETS}}
+      \frametitle{Effekt von GROUPING SETS}
     
       Simulation von \op{ROLLUP}
       \begin{sql}
@@ -1044,7 +1078,7 @@
     
     \begin{frame}
     
-      \frametitle{Effekt von \op{GROUPING SETS} /2}
+      \frametitle{Effekt von GROUPING SETS /2}
     
     \begin{sql}
       \op{SELECT} Bundesland, Jahr, \op{SUM}(Umsatz) \op{FROM} Verkauf \\
@@ -1066,7 +1100,7 @@
     
     \begin{frame}
     
-      \frametitle{Effekt von \op{GROUPING SETS} /3}
+      \frametitle{Effekt von GROUPING SETS /3}
     
       mehrfache Gruppierung ohne \op{GROUPING SETS}
     
@@ -1083,7 +1117,7 @@
     
     \begin{frame}
     
-      \frametitle{Effekt von \op{GROUPING SETS} /4}
+      \frametitle{Effekt von GROUPING SETS /4}
     
     mit \op{GROUPING SETS}
     
