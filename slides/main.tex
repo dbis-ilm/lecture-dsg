@@ -28,6 +28,7 @@
 \usepackage{makecell}
 
 \usepackage{listings}
+\usepackage{minted}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% some macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{structure}{rgb}{0.1,0.1,0.7}
@@ -50,9 +51,31 @@
 \newcommand{\ccomment}[1]{\textrm{\textit{#1}}}
 
 \definecolor{light-gray}{gray}{0.95}
+
+\setminted[python]{frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=light-gray,
+fontsize=\footnotesize,
+linenos}
+
+\setminted[bash]{frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=light-gray,
+fontsize=\footnotesize,
+linenos}
+
+\setminted[json]{frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=light-gray,
+fontsize=\footnotesize,
+linenos}
 \lstset{
 	basicstyle=\scriptsize\ttfamily,
-	numbers=left,
+  %basicstyle=\scriptsize\fontfamily{pfr}\fontseries{mc}\selectfont,
+  numbers=left,
 	language=python,
 	frame=single,
 	frameround=tttt,
