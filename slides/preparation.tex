@@ -5,6 +5,263 @@
   \tableofcontents[currentsection,hidesubsections,firstsection=15]
 }
 
+\begin{frame}
+	\frametitle{\glqq{}Gebrauchsfertige\grqq{} Datensätze}
+	
+	Kollektionen: \vspace{-.33\baselineskip}
+	\begin{itemize}
+		\item \ehref{https://www.kaggle.com/datasets}{Kaggle}
+		\item \ehref{https://archive.ics.uci.edu/ml/index.php}{UCI Machine Learning Repository}
+		\item \ehref{https://datahub.io/collections}{DataHub.io}
+	\end{itemize}
+	
+	Open Data: \vspace{-.33\baselineskip}
+	\begin{itemize}
+		\item \ehref{https://www.govdata.de/}{GovData (Deutschland)}
+		\item \ehref{https://data.deutschebahn.com/}{Open-Data-Portal (Deutsche Bahn)}
+		\item \ehref{https://data.gov/}{Data.gov (USA)}
+		\item \ehref{http://opendata.cern.ch/}{CERN Open Data Portal}
+	\end{itemize}
+	
+	Suchmaschinen: \vspace{-.33\baselineskip}
+	\begin{itemize}
+		\item \ehref{https://datasetsearch.research.google.com/}{Dataset Search (Google)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Einlesen von und Schreiben in Dateien}
+	
+	Verwenden Sie Kontext-Manager!
+	
+	\begin{lstlisting}[language=Python]
+with open('datei.txt', 'r', encoding='utf-8') as file:
+    for line in file:
+        print(line)\end{lstlisting}
+    
+	\begin{lstlisting}[language=Python]
+with open('nummern.txt', 'w', encoding='utf-8') as file:
+    file.write('1\n')
+    file.write('2\n')
+
+    file.writelines(['11\n', '12\n'])\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Einlesen von und Schreiben in Dateien (2)}
+	
+	Datei-Modi:
+	
+	\begin{itemize}
+		\item[\alert{r}] nur lesen
+		\item[\alert{w}] Datei leeren und dann schreiben
+		\item[\alert{a}] Datei öffnen und ans Ende schreiben
+		\item[\alert{rb}] nur lesen im Binärmodus
+		\item[\alert{rw}] Datei leeren und dann schreiben im Binärmodus
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Wiederholung: Datenformat CSV}
+	
+	\alert{C}omma-\alert{S}eparated \alert{V}alues
+	
+	\begin{lstlisting}
+title,release_year
+Duck the Halls: A Mickey Mouse Christmas Special,2016
+Ernest Saves Christmas,1988
+"Dr. Oakley, Yukon Vet",2013\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{CSV einlesen}
+	
+	\begin{lstlisting}
+import csv
+
+with open('file.csv', 'r', encoding='utf-8') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+    
+# ['title', 'release_year']
+# ['Duck the Halls: A Mickey Mouse Christmas Special', '2016']
+# ['Ernest Saves Christmas', '1988']
+# ['Dr. Oakley, Yukon Vet', '2013']\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Wiederholung: Datenformat JSON}
+	
+	\alert{J}ava\alert{S}cript \alert{O}bject \alert{N}otation
+	
+	\begin{lstlisting}[basicstyle=\tiny\ttfamily]
+[
+    {
+        "title": "Duck the Halls: A Mickey Mouse Christmas Special",
+        "cast": [
+            "Chris Diamantopoulos",
+            "Tony Anselmo",
+            "Tress MacNeille",
+            "Bill Farmer",
+            "Russi Taylor",
+            "Corey Burton"
+        ]
+    }, {
+        ...
+    }
+]\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{JSON einlesen}
+
+	\begin{lstlisting}[language=Python]
+import json
+
+with open('file.json', 'r', encoding='utf-8') as file:
+    data = json.load(file)
+    print(data['title'])
+
+# Duck the Halls: A Mickey Mouse Christmas Special\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Wiederholung: Datenformat Pickle}
+	
+	\begin{itemize}
+		\item \alert{binäres} Format (Modus \code{rb})
+		\item nur in Python verfügbar!
+	\end{itemize}
+
+	\begin{lstlisting}[language=Python]
+with open('file.pickle', 'rb', encoding='utf-8') as file:
+    data = pickle.load(file)
+    print(data['title'])\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Erstellung eigener Datensätze}
+
+	\begin{enumerate}
+		\item Quelle(n) interessanter Daten identifizieren
+		\item \hl{Daten herunterladen}
+		\item Daten zusammenführen
+		\item Daten analysieren
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Erstellung eigener Datensätze: API}
+	
+	\alert{A}pplication \alert{P}rogramming \alert{I}nterface
+
+	\begin{itemize}
+		\item in diesem Kontext über das Internet erreichbar
+		\item strukturierte Daten (maschinenlesbar)
+		\item definierte Antwortformate
+		\item Angebot eines Anbieters
+		\begin{itemize}
+			\item nur ausgewählte Daten
+			\item häufig nur nach Registrierung
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Erstellung eigener Datensätze: API}
+	
+	\begin{lstlisting}[language=bash]
+> curl "https://swapi.dev/api/films/1"
+{
+    "title": "A New Hope",
+    "episode_id": 4,
+    "opening_crawl": "It is a period of civil war. ...",
+    "director": "George Lucas",
+    "producer": "Gary Kurtz, Rick McCallum",
+    "release_date": "1977-05-25",
+    ...
+}\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Erstellung eigener Datensätze: API}
+	
+	\begin{lstlisting}[language=Python]
+import requests
+
+response = requests.get('https://swapi.dev/api/films/1')
+first_movie = response.json()
+
+print(first_movie)
+
+# {
+#     "title": "A New Hope",
+#     "episode_id": 4,
+#     "opening_crawl": "It is a period of civil war. ...",
+#     "director": "George Lucas",
+#     "producer": "Gary Kurtz, Rick McCallum",
+#     "release_date": "1977-05-25",
+#     ...
+# }\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Erstellung eigener Datensätze: Scraping}
+	
+	\begin{itemize}
+		\item Funktion eines Web Browsers nachbilden
+		\item automatisierte Auswertung statt Anzeige
+		\item Wissen über Aufbau von HTML-Dokumenten notwendig
+		\item Probleme:
+		\begin{itemize}
+			\item interaktive Inhalte (JavaScript)
+			\item Gegenmaßnahmen (z.B. CAPTCHA)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Erstellung eigener Datensätze: Scraping}
+	
+	Download des Textes:
+
+	\begin{lstlisting}[language=Python]
+import requests
+text = requests.get('https://de.wikipedia.org/wiki/Kino').text
+
+print(text)
+
+# <!DOCTYPE html>
+# <html class="client-nojs" lang="de" dir="ltr">
+# <head>
+# <meta charset="UTF-8"/>
+# <title>Kino – Wikipedia</title>
+# ...\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Erstellung eigener Datensätze: Scraping}
+
+Suchen von Elementen und Extrahieren von Werten:
+
+\begin{lstlisting}[language=Python]
+from bs4 import BeautifulSoup
+page = BeautifulSoup(text)
+
+table_of_contents = page.find('div', id='toc')
+toc_entries = table_of_contents.find_all('a')
+
+for entry in toc_entries:
+    print(entry.text)
+
+# 1 Geschichte
+# 2 Technik
+# 2.1 Projektion
+# 2.2 Tonwiedergabe
+# ...\end{lstlisting}
+\end{frame}
+
     %---------------------------------------------------------------------
 
 \section{Heterogenität und Datenfehler}
@@ -27,7 +284,7 @@
       verschiedener Quellen und möglichen \hl{Datenfehlern}
     \end{itemize}
     
-    \end{frame}
+\end{frame}
     
     %---------------------------------------------------------------------
     
