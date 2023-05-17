@@ -30,6 +30,10 @@
 \usepackage{listings}
 \usepackage{minted}
 
+% für rechtsbündige Zitate
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.67\textwidth}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% some macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{structure}{rgb}{0.1,0.1,0.7}
 \definecolor{azureblue}{rgb}{0.0, 0.5, 1.0}
@@ -246,10 +250,12 @@ linenos}
 
 \frame[plain,c]{\partpage}
 
-\frame{
-  \frametitle{Überblick}
-  \tableofcontents[pausesections,hidesubsections,firstsection=21]
-}
+%\frame{
+%  \frametitle{Überblick}
+%  \tableofcontents[pausesections,hidesubsections,firstsection=21]
+%}
+
+\include{visualization}
 
 %\include{graphmining}
 
