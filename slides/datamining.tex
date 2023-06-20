@@ -10,12 +10,12 @@
 \begin{itemize}
 \item \hl{Prinzip des Clustering}
 \begin{itemize}
-\item Häufungspunkt von Objekten im multidimensionalen Raum 
+\item Häufungspunkt von Objekten im multidimensionalen Raum
 \end{itemize}
 \item \hl{Distanzfunktionen}
 \begin{itemize}
-\item Konstruktion zentraler Punkte 
-\item Auswahl repräsentativer Punkte 
+\item Konstruktion zentraler Punkte
+\item Auswahl repräsentativer Punkte
 \end{itemize}
 \item\hl{Clusterverfahren}
 \end{itemize}
@@ -28,12 +28,12 @@
 \frametitle{Anwendung des Clustering}
 
 \begin{itemize}
-\item \hl{Ziel des Clustering} 
+\item \hl{Ziel des Clustering}
 \begin{itemize}
 \item Identifikation einer endlichen Menge von Kategorien/Klassen
-  (\hl{Clustern}) um Daten so zu beschreiben, dass 
+  (\hl{Clustern}) um Daten so zu beschreiben, dass
 \begin{enumerate}[(a)]
-\item Objekte im gleichen Cluster möglichst ähnlich und 
+\item Objekte im gleichen Cluster möglichst ähnlich und
 \item Objekte aus verschiedenen Clustern möglichst unähnlich zueinander sind
 \end{enumerate}
 
@@ -43,9 +43,9 @@
 \includegraphics[scale=.4]{fig7/cluster-formen.pdf}
 \end{center}
 
-\item \hl{Probleme} 
+\item \hl{Probleme}
 \begin{itemize}
-\item Ähnlichkeitsbegriff 
+\item Ähnlichkeitsbegriff
 \item Cluster unterschiedlicher Größe, Form und Dichte
 \item Cluster können hierarchisch ineinander verschachtelt sein
 \end{itemize}
@@ -60,21 +60,21 @@
 \begin{itemize}
 \item \hl{Übersicht}
 \begin{itemize}
-\item  Kundensegmentierung 
+\item  Kundensegmentierung
 \begin{itemize}
-\item  Clustering der Kundentransaktionen 
+\item  Clustering der Kundentransaktionen
 \end{itemize}
-\item  Bestimmung von Benutzergruppen auf dem Web 
+\item  Bestimmung von Benutzergruppen auf dem Web
 \begin{itemize}
-\item  Clustering der Web-Logs 
+\item  Clustering der Web-Logs
 \end{itemize}
-\item  Strukturierung von großen Mengen von Textdokumenten 
+\item  Strukturierung von großen Mengen von Textdokumenten
 \begin{itemize}
-\item  Hierarchisches Clustering von Textdokumenten 
+\item  Hierarchisches Clustering von Textdokumenten
 \end{itemize}
-\item  Erstellung von thematischen Karten aus Satellitenbildern 
+\item  Erstellung von thematischen Karten aus Satellitenbildern
 \begin{itemize}
-\item  Clustering der aus Rasterbildern gewonnenen Featurevektoren 
+\item  Clustering der aus Rasterbildern gewonnenen Featurevektoren
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -92,19 +92,19 @@
 \begin{itemize}
 \item Ein Maß für die "`Nähe"' von Paaren von Objekten $o_1$, $o_2$
   wird durch eine Distanzfunktion $\dist$ modelliert, die sich auf
-  direkte oder abgeleitete Eigenschaften  der Objekte stützt.  
+  direkte oder abgeleitete Eigenschaften  der Objekte stützt.
 \begin{itemize}
-\item kleine Distanzen = ähnliche Objekte 
-\item große Distanzen = unähnliche Objekte 
+\item kleine Distanzen = ähnliche Objekte
+\item große Distanzen = unähnliche Objekte
 \end{itemize}
-\item Für $\dist$ gelten mindestens die folgenden Bedingungen 
+\item Für $\dist$ gelten mindestens die folgenden Bedingungen
 \begin{itemize}
-\item $\dist(o_1, o_2) = d \in R$ 
-\item $\dist(o_1, o_2) = 0$ genau dann wenn $o_1=o_2$ 
-\item $\dist(o_1, o_2) = \dist(o_2,o_1)$ (Symmetrie) 
+\item $\dist(o_1, o_2) = d \in R$
+\item $\dist(o_1, o_2) = 0$ genau dann wenn $o_1=o_2$
+\item $\dist(o_1, o_2) = \dist(o_2,o_1)$ (Symmetrie)
 \end{itemize}
 \item $\dist$ ist eine Metrik, wenn zusätzlich die Dreiecksungleichung
-  gilt, d.h.  
+  gilt, d.h.
 $$\dist(o_1,o_3) \leq \dist(o_1,o_2) + \dist(o_2, o_3) $$
 \end{itemize}
 \end{itemize}
@@ -118,9 +118,9 @@ $$\dist(o_1,o_3) \leq \dist(o_1,o_2) + \dist(o_2, o_3) $$
 
 \begin{itemize}
 \item Clusteranalyse wird manchmal auch als "`Distanzgruppierung"'
-  bezeichnet   
+  bezeichnet
 \item Die Güte einer Clusteranalyse hängt stark von der Adäquatheit
-  der Distanzfunktion $\dist$ ab 
+  der Distanzfunktion $\dist$ ab
 \end{itemize}
 
 \end{frame}
@@ -131,7 +131,7 @@ $$\dist(o_1,o_3) \leq \dist(o_1,o_2) + \dist(o_2, o_3) $$
 \frametitle{Beispiele für Distanzfunktionen}
 
 \begin{itemize}
-\item Für Datensätze $x= (x_1, \dots, x_d)$ mit numerischen Werten $x_i$  
+\item Für Datensätze $x= (x_1, \dots, x_d)$ mit numerischen Werten $x_i$
 \begin{itemize}
 \item L$_p$-Metrik (Minkowski-Distanz): $$\dist(x, y) = p \sqrt{\sum_{i=1}^d (x_i - y_i)^p}$$
 \item "`Euklidische Distanz"' ($p=2$): $$\dist(x, y) = \sqrt{(x_1 -
@@ -161,16 +161,16 @@ $$\dist(o_1,o_3) \leq \dist(o_1,o_2) + \dist(o_2, o_3) $$
 
 \begin{itemize}
 \item Für Datensätze $x= (x_1, \dots, x_d)$ mit kategorischen
-  Attributswerten $x_i$:  
+  Attributswerten $x_i$:
 "`Anzahl der verschiedenen Werte"'
 $$\dist_k(x,y)=\sum_{i=1}^d \delta(x_i,
-y_i)\;\text{wobei}\;\delta(x_i,y_i) = 
+y_i)\;\text{wobei}\;\delta(x_i,y_i) =
 \begin{cases}
 0 & \text{wenn}\; x_i=y_i \\
-1 & \text{wenn}\; x_i\neq y_i 
+1 & \text{wenn}\; x_i\neq y_i
 \end{cases}$$
 \item Für endliche Mengen $x= \{x_1, \dots, x_d\}$: "`Anteil der
-  verschiedenen Elemente in $x$ und $y$"'  
+  verschiedenen Elemente in $x$ und $y$"'
 $$\dist_m(x, y) = \frac{|x \cup y| - |x \cap y|}{|x \cup y|}$$
 \end{itemize}
 \end{frame}
@@ -181,9 +181,9 @@ $$\dist_m(x, y) = \frac{|x \cup y| - |x \cap y|}{|x \cup y|}$$
 \frametitle{Beispiele für Distanzfunktionen /4}
 
 \begin{itemize}
-\item Für binäre Variable 
+\item Für binäre Variable
 \begin{itemize}
-\item Tabelle mit Werten für Ähnlichkeit 
+\item Tabelle mit Werten für Ähnlichkeit
 
 \begin{center}
 \begin{tabular}{|c||c|c|c|}
@@ -200,9 +200,9 @@ $\sum$ & $a+c$ & $b+d$ & \\
 \end{tabular}
 \end{center}
 
-\item Einfacher Ähnlichkeitskoeffizient 
+\item Einfacher Ähnlichkeitskoeffizient
 $$d_S(x,y) = \frac{a+d}{a+b+c+d}$$
-\item Jaccard Koeffizient 
+\item Jaccard Koeffizient
 $$d_J(x,y) = \frac{a}{c+b+d}$$
 \end{itemize}
 \end{itemize}
@@ -215,7 +215,7 @@ $$d_J(x,y) = \frac{a}{c+b+d}$$
 \frametitle{Beispiele für Distanzfunktionen /5}
 
 \begin{itemize}
-\item Beispiel für binäre Variable 
+\item Beispiel für binäre Variable
 {\footnotesize
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
@@ -231,7 +231,7 @@ Jim  & M & Y & Y & N & N & N & N \\
 \item $1 = (Y,P)$; $0 = (N)$
 \begin{itemize}
 \item $d_S$(Jack, Mary) $= \frac{5}{7} = 0.71$
-\item $d_S$(Jack, Jim) $= \frac{4}{7} = 0.57$ 
+\item $d_S$(Jack, Jim) $= \frac{4}{7} = 0.57$
 \item $d_S$(Jim, Mary) $= \frac{3}{7} = 0.43$
 \end{itemize}
 \end{itemize}
@@ -247,29 +247,29 @@ Jim  & M & Y & Y & N & N & N & N \\
 \item \hl{Prinzipielle Idee}
 \begin{itemize}
 \item Partitionierende Verfahren zerlegen eine Datenmenge in $k$
-  Cluster, wobei gilt:  
+  Cluster, wobei gilt:
 \begin{itemize}
-\item jeder Cluster enthält mindestens ein Objekt 
-\item jedes Objekt gehört genau zu einem Cluster 
+\item jeder Cluster enthält mindestens ein Objekt
+\item jedes Objekt gehört genau zu einem Cluster
 \end{itemize}
 \end{itemize}
-\item \hl{Konstruktion zentraler Punkte} [Forgy 1965] 
+\item \hl{Konstruktion zentraler Punkte} [Forgy 1965]
 \begin{itemize}
-\item Voraussetzung 
+\item Voraussetzung
 \begin{itemize}
 \item Objekte sind Punkte $p=(x^p_1, \dots, x^p_d)$ in einem
   $d$-dimensionalen euklidischen Vektorraum; Verwendung der
-  euklidischen Distanz für die Ähnlichkeit  
+  euklidischen Distanz für die Ähnlichkeit
 \end{itemize}
-\item Zentroide 
+\item Zentroide
 \begin{itemize}
 \item Jeder Cluster $C$ wird durch seinen Zentroid $\overline{x}_C$
   repräsentiert: $\overline{x}_C=(\overline{x}_1(C),
-  \overline{x}_2(C), \dots, \overline{x}_d(C))$ 
+  \overline{x}_2(C), \dots, \overline{x}_d(C))$
 \item $\overline{x}_j(C)=\frac{1}{n_C}\cdot\sum_{p\in C}x^p_j$ ist
-  Mittelwert für die $j$-te Dimension der Punkte im Cluster $C$  
+  Mittelwert für die $j$-te Dimension der Punkte im Cluster $C$
 \item Zentroid eines Clusters ist anschaulich der Mittelwert aller
-  Punkte des Clusters  
+  Punkte des Clusters
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -284,13 +284,13 @@ Jim  & M & Y & Y & N & N & N & N \\
 \begin{itemize}
 \item \hl{Maß für die Kompaktheit eines Clusters}
 \begin{itemize}
-\item Summe der quadrierten euklidischen Distanzen zum Zentroid: 
+\item Summe der quadrierten euklidischen Distanzen zum Zentroid:
 $$TD^2(C) = \sum_{p \in C} \dist(p, \overline{x}_C)^2$$
 \end{itemize}
 \item \hl{Maß für die Kompaktheit eines Clustering}
 \begin{itemize}
 \item Summe der quadrierten Distanzen jedes Punktes zum Zentroid seines
-Clusters: 
+Clusters:
 $$TD^2=\sum_{i=1}^k TD^2(C_i)$$
 \end{itemize}
 
@@ -306,12 +306,12 @@ $$TD^2=\sum_{i=1}^k TD^2(C_i)$$
 \begin{itemize}
 \item \hl{Ziel}
 \begin{itemize}
-\item Zerlegung der Punktmenge in $k$ Klassen, so dass $TD^2$ minimal ist 
+\item Zerlegung der Punktmenge in $k$ Klassen, so dass $TD^2$ minimal ist
 \item Interpretation: die $k$ Klassen werden so gebildet, dass die
   Varianz bezüglich der gegebenen Mittelwerte minimal wird ("`Varianz
-  minimierende Techniken"')  
+  minimierende Techniken"')
 \item Umformulierung des Ausdrucks für $TD^2(C)$ zeigt Minimierung der
- Varianz: 
+ Varianz:
 $$TD^2(C) = \sum_{p \in C}\sum_{j=1}^d (x^p_j - \overline{x}_j(C))^2$$
 \end{itemize}
 \end{itemize}
@@ -325,7 +325,7 @@ $$TD^2(C) = \sum_{p \in C}\sum_{j=1}^d (x^p_j - \overline{x}_j(C))^2$$
 
 \begin{itemize}
 \item \hl{Beispiel für k=3:}
-\end{itemize} 
+\end{itemize}
 
 
 \begin{center}
@@ -349,7 +349,7 @@ $$TD^2(C) = \sum_{p \in C}\sum_{j=1}^d (x^p_j - \overline{x}_j(C))^2$$
 \1 \op{repeat until} $C = C'$ \\
 \2 $C = C'$; \\
 \2 \textrm{Bilde $k$ Klassen, durch Zuordnung jedes Punkts zum} \\
-\3 \textrm{nächstliegenden Zentroid;}   \\ 
+\3 \textrm{nächstliegenden Zentroid;}   \\
 \2 \textrm{Berechne die Menge} $C'= \{C'_1, \dots, C'_k\}$ \textrm{der Zentroide} \\
 \3 \textrm{für die neu bestimmten Klassen;} \\
 \1 \op{return} $C$; \\
@@ -375,17 +375,17 @@ $$TD^2(C) = \sum_{p \in C}\sum_{j=1}^d (x^p_j - \overline{x}_j(C))^2$$
 \begin{itemize}
 \item \hl{Eigenschaften des Algorithmus}
 \begin{itemize}
-\item Konvergiert gegen ein (möglicherweise nur lokales) Minimum 
-\item Aufwand: $O(k \cdot n)$ für eine Iteration 
+\item Konvergiert gegen ein (möglicherweise nur lokales) Minimum
+\item Aufwand: $O(k \cdot n)$ für eine Iteration
 \item Anzahl der Iterationen ist im Allgemeinen klein ($\approx 5 -
-  10$) 
+  10$)
 \end{itemize}
 \item \hl{weitere schwer quantifizierbare Eigenschaften}
 \begin{itemize}
-\item Anfälligkeit gegenüber Rauschen/Ausreißern 
-\item konvexe Form der Cluster 
+\item Anfälligkeit gegenüber Rauschen/Ausreißern
+\item konvexe Form der Cluster
 \item Ergebnis und Laufzeit hängen stark von der Initialisierung (der
-  ersten zufälligen Zerlegung) ab  
+  ersten zufälligen Zerlegung) ab
 \end{itemize}
 \end{itemize}
 
@@ -399,18 +399,18 @@ $$TD^2(C) = \sum_{p \in C}\sum_{j=1}^d (x^p_j - \overline{x}_j(C))^2$$
 \begin{itemize}
 \item \hl{Variante des Basisalgorithmus}
 \begin{itemize}
-\item Zentroide werden jedesmal direkt aktualisiert, wenn ein Punkt seine 
-Clusterzugehörigkeit ändert 
+\item Zentroide werden jedesmal direkt aktualisiert, wenn ein Punkt seine
+Clusterzugehörigkeit ändert
 \item Inkrementelle Anpassung, wenn ein Punkt $p$ vom Cluster $C_1$
-  zum Cluster $C_2$ wechselt  
+  zum Cluster $C_2$ wechselt
 \begin{eqnarray*}
 \overline{x}_j(C'_1) &=& \frac{1}{n_{C_1}-1}\cdot (n_{C_1} \cdot
 \overline{x}_j(C_1)-x^p_j) \\
-\overline{x}_j(C'_2) &=& \frac{1}{n_{C_2}+1}\cdot 
-(n_{C_2} \cdot \overline{x}_j(C_2)+x^p_j) 
+\overline{x}_j(C'_2) &=& \frac{1}{n_{C_2}+1}\cdot
+(n_{C_2} \cdot \overline{x}_j(C_2)+x^p_j)
 \end{eqnarray*}
 $n_C$ gleich der Anzahl der Objekte in $C$
-\end{itemize} 
+\end{itemize}
 \end{itemize}
 
 \end{frame}
@@ -424,20 +424,20 @@ $n_C$ gleich der Anzahl der Objekte in $C$
 \item \hl{Bemerkungen}
 \begin{itemize}
 \item bekannteste und am häufigsten angewendete partitionierende
-  Clustering-Methode  
+  Clustering-Methode
 \item K-Means hat im Wesentlichen die gleichen Eigenschaften wie die
   obige Basismethode, ist aber zusätzlich noch stark
-  reihenfolgeabhängig 
+  reihenfolgeabhängig
 \end{itemize}
 \item\hl{Variante ISODATA (Iterative Self-Organizing Data Analysis Techniques)}
 \begin{itemize}
-\item Verbesserung der Methode durch zusätzliche Operationen 
+\item Verbesserung der Methode durch zusätzliche Operationen
 \begin{itemize}
-\item Eliminiation sehr kleiner Cluster 
+\item Eliminiation sehr kleiner Cluster
 \item Verschmelzung von ähnlichen Clustern
 \item Aufspalten von Cluster mit einer großen Standardabweichung
 \end{itemize}
-\item Problematisch: Parametrierung! 
+\item Problematisch: Parametrierung!
 \end{itemize}
 \end{itemize}
 
@@ -493,9 +493,9 @@ plt.scatter(data[:,0], data[:,1], c=labels, s=50)
 import seaborn as sb
 iris = sb.load_dataset('iris')
 data = iris.drop('species', axis=1)
-labels = KMeans(n_clusters=3, random_state=0) 
+labels = KMeans(n_clusters=3, random_state=0)
          .fit_predict(data)
-plt.scatter(data['sepal_length'], data['sepal_width'], 
+plt.scatter(data['sepal_length'], data['sepal_width'],
   c=labels, s=50)
 \end{minted}
 \end{frame}
@@ -526,14 +526,14 @@ labels = KMeans(n_clusters=2, random_state=0).fit_predict(data)
 \item\hl{Voraussetzung}
 \begin{itemize}
 \item Beliebige Objekte und eine beliebige Distanzfunktion zur
-  Modellierung der Ähnlichkeit 
+  Modellierung der Ähnlichkeit
 \end{itemize}
-\item\hl{Medoide} 
+\item\hl{Medoide}
 \begin{itemize}
 \item Repräsentation eines Clusters $C$ (repräsentativer Punkt /
- "`zentralstes"' Objekt)  
+ "`zentralstes"' Objekt)
 \item Unterschied zu einem Zentroid: Medoid ist ein Objekt, welches
-  auch in der Datenmenge vorkommt 
+  auch in der Datenmenge vorkommt
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -547,15 +547,15 @@ labels = KMeans(n_clusters=2, random_state=0).fit_predict(data)
 \begin{itemize}
 \item\hl{Maß für die Kompaktheit eines Clusters}
 \begin{itemize}
-\item Summe der Distanzen zum Medoid 
+\item Summe der Distanzen zum Medoid
 $$TD(C) = \sum_{p \in C} \dist(p, m_C)$$
 \end{itemize}
-\item\hl{Maß für die Kompaktheit eines Clustering} 
+\item\hl{Maß für die Kompaktheit eines Clustering}
 \begin{itemize}
-\item Summe der Distanzen jedes Punktes zum Medoid seines Clusters 
+\item Summe der Distanzen jedes Punktes zum Medoid seines Clusters
 $$TD=\sum_{i=1}^k TD(C_i)$$
 \end{itemize}
-\item\hl{Ziel: Bestimmung von $k$ Medoiden, so dass $TD$ minimal ist} 
+\item\hl{Ziel: Bestimmung von $k$ Medoiden, so dass $TD$ minimal ist}
 \end{itemize}
 \end{frame}
 
@@ -565,7 +565,7 @@ $$TD=\sum_{i=1}^k TD(C_i)$$
 \frametitle{Konstruktion von Medoiden}
 
 \begin{itemize}
-\item\hl{Beispiel für k=3:} 
+\item\hl{Beispiel für k=3:}
 
 \begin{center}
 \includegraphics[scale=.6]{fig7/medoide.pdf}
@@ -573,9 +573,9 @@ $$TD=\sum_{i=1}^k TD(C_i)$$
 
 \item\hl{Idee zum PAM-Algorithmus}
 \begin{itemize}
-\item Vertausche in jedem Schritt ein Medoid mit einem Nicht-Medoid 
+\item Vertausche in jedem Schritt ein Medoid mit einem Nicht-Medoid
 \item Auswahl des Paares, welches die größte Reduktion der Kosten von
-  $TD$ bewirkt  
+  $TD$ bewirkt
 \end{itemize}
 \end{itemize}
 
@@ -600,7 +600,7 @@ $$TD=\sum_{i=1}^k TD(C_i)$$
 \2\op{if} TD\_Änderung $< 0$ \op{then} \\
 \3 \textrm{ersetze den Medoid $M$ tatsächlich durch den Nicht-Medoid $N$;} \\
 \3 \textrm{speichere die aktuellen Medoide als die} \\
-\4 \textrm{bisher beste Partionierung} 
+\4 \textrm{bisher beste Partionierung}
 \end{algo}
 
 \end{frame}
@@ -615,11 +615,11 @@ $$TD=\sum_{i=1}^k TD(C_i)$$
 \item\hl{Eigenschaften des Algorithmus}
 \begin{itemize}
 \item Greedy-Verfahren: Konvergiert gegen ein (möglicherweise nur
-  lokales) Minimum  
+  lokales) Minimum
 \item Ergebnis und Laufzeit hängen nicht von der Reihenfolge, in der
-  die Objekte gespeichert sind, ab (in Gegensatz zu K-Means). 
+  die Objekte gespeichert sind, ab (in Gegensatz zu K-Means).
 \item Größtes Problem des Algorithmus PAM ist seine enorme Laufzeit
-  $\rightarrow$ kleine Datenmengen   
+  $\rightarrow$ kleine Datenmengen
 \end{itemize}
 \end{itemize}
 
@@ -631,16 +631,16 @@ $$TD=\sum_{i=1}^k TD(C_i)$$
 \begin{itemize}
 \item\hl{CLARA (Clustering Large Applications)}
 \begin{itemize}
-\item PAM auf mehrere Stichproben; Auswahl des besten Clustering-Ergebnisses 
-\item größere Datenmenge, aber Entscheidung nur auf Stichproben! 
+\item PAM auf mehrere Stichproben; Auswahl des besten Clustering-Ergebnisses
+\item größere Datenmenge, aber Entscheidung nur auf Stichproben!
 \end{itemize}
 \item\hl{CLARANS -- Clustering Large Applications based on RANdomized Search}
 \begin{itemize}
 \item Betrachtung von höchstens \texttt{maxneighbor} viele zufällig ausgewählten
-  Paaren  
+  Paaren
 \item Durchführung der ersten Ersetzung, die überhaupt eine
-  Reduzierung des $TD$-Wertes bewirkt 
-\item Suche nach $k$ "`optimalen"' Medoiden wird \texttt{numlocal} mal wiederholt 
+  Reduzierung des $TD$-Wertes bewirkt
+\item Suche nach $k$ "`optimalen"' Medoiden wird \texttt{numlocal} mal wiederholt
 \end{itemize}
 \end{itemize}
 
@@ -653,20 +653,20 @@ $$TD=\sum_{i=1}^k TD(C_i)$$
 \frametitle{Bestimmung der natürlichen Anzahl von Clustern}
 
 \begin{itemize}
-\item \hl{bisher} 
+\item \hl{bisher}
 \begin{itemize}
-\item Wert $k$ für die Anzahl der Cluster vom Benutzer vorgegeben 
+\item Wert $k$ für die Anzahl der Cluster vom Benutzer vorgegeben
 \item "`richtige"' Anzahl der Cluster unbekannt ist in vielen
-  Anwendungen jedoch unbekannt  
+  Anwendungen jedoch unbekannt
 \end{itemize}
 \item \hl{Bestimmung der Anzahl von Clustern}
 \begin{itemize}
-\item $k$-fache Anwendung der K-Means- oder K-Medoid-Verfahren 
-\item Auswahl des besten "`Cluster"'-Ergebnisses 
-\item Güte eines Clusterings 
+\item $k$-fache Anwendung der K-Means- oder K-Medoid-Verfahren
+\item Auswahl des besten "`Cluster"'-Ergebnisses
+\item Güte eines Clusterings
 \begin{itemize}
-\item Kompaktheit eines Clusterings, d.h. $TD^2$ bzw. $TD$ ungeeignet 
-\item besser: Silhouetten-Koeffizient 
+\item Kompaktheit eines Clusterings, d.h. $TD^2$ bzw. $TD$ ungeeignet
+\item besser: Silhouetten-Koeffizient
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -682,11 +682,11 @@ $$TD=\sum_{i=1}^k TD(C_i)$$
 \item \hl{Verallgemeinerte Abstände}
 \begin{itemize}
 \item Durchschnittlicher Abstand des Objekts $o$ zu einem Cluster
-  $C_i$:  
+  $C_i$:
 $$\dist(o,C_i)=\frac{\sum_{p\in C_i}\dist(o,p)}{|C_i|}$$
 \item Durchschnittlicher Abstand des Objekts $o$ zu "`seinem"' Cluster
-  $C$: $a(o) = \dist(o,C)$ 
-\item Durchschnittlicher Abstand des Objekts $o$ zum "`Nachbar-Cluster"': 
+  $C$: $a(o) = \dist(o,C)$
+\item Durchschnittlicher Abstand des Objekts $o$ zum "`Nachbar-Cluster"':
 $b(o)=\displaystyle\min_{C_i \in C_M, C_i\neq C} \dist(o, C_i)$
 \end{itemize}
 \end{itemize}
@@ -707,16 +707,16 @@ s(o)=
 \frac{b(o)-a(o)}{\max\{a(o),b(o)\}}\;&\text{sonst}
 \end{cases}
 $$
- mit $-1 \leq s(o) \leq 1$ 
+ mit $-1 \leq s(o) \leq 1$
 \begin{itemize}
-\item Interpretation der Silhouette eines Objekts 
+\item Interpretation der Silhouette eines Objekts
 \begin{itemize}
 \item $s(o) \approx 0$, d.h. $a(o)\approx b(o)$, $o$ liegt ungefähr
-  zwischen seinem eigenen und dem Nachbarcluster  
+  zwischen seinem eigenen und dem Nachbarcluster
 \item $s(o) \approx 1$, d.h. $a(o)$ ist wesentlich kleiner als $b(o)$,\\
-  $o$ ist gut klassifiziert  
+  $o$ ist gut klassifiziert
 \item $s(o) \approx -1$, d.h. $b(o)$ ist wesentlich kleiner als
-  $a(o)$,\\ $o$ ist schlecht klassifiziert  
+  $a(o)$,\\ $o$ ist schlecht klassifiziert
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -733,14 +733,14 @@ $$
 $$s(C_M) = \frac{\displaystyle\sum_{C\in C_M} \displaystyle\sum_{o \in C} s(o)}{|O|}$$
 \begin{itemize}
 \item Maß für die Güte eines Clustering, welches unabhängig von der
-  Anzahl $k$ der Cluster ist  
+  Anzahl $k$ der Cluster ist
 \item Je höher der Wert $s(C_M)$, desto besser ist das Clustering
 \end{itemize}
 \item\hl{Interpretation des Silhouetten-Koeffizienten}
 \begin{itemize}
-\item starke Struktur: $0.70 < s(C_M) \leq 1.00$ 
-\item brauchbare Struktur: $0.50 < s(C_M) \leq 0.70$ 
-\item schwache Struktur: $0.25 < s(C_M) \leq 0.50$ 
+\item starke Struktur: $0.70 < s(C_M) \leq 1.00$
+\item brauchbare Struktur: $0.50 < s(C_M) \leq 0.70$
+\item schwache Struktur: $0.25 < s(C_M) \leq 0.50$
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -775,7 +775,7 @@ $$s(C_M) = \frac{\displaystyle\sum_{C\in C_M} \displaystyle\sum_{o \in C} s(o)}{
 \frametitle{Klassifikationsproblem}
 
 \begin{itemize}
-\item Gegeben: 
+\item Gegeben:
 \begin{itemize}
 \item Grundgesamtheit $G$ von zu klassifizierenden Objekten
 \item eine Menge $O \subset G$ von Objekten des Formats $(o_1, \dots,
@@ -784,9 +784,9 @@ $$s(C_M) = \frac{\displaystyle\sum_{C\in C_M} \displaystyle\sum_{o \in C} s(o)}{
 \end{itemize}
 \item Gesucht:
 \begin{itemize}
-\item die Klassenzugehörigkeit für Objekte aus $D \setminus O$ 
+\item die Klassenzugehörigkeit für Objekte aus $D \setminus O$
 \item ein Klassifikator $K: D \rightarrow C$
-\end{itemize} 
+\end{itemize}
 \item Abgrenzung zum Clustering
 \begin{itemize}
 \item Klassifikation: Klassen apriori bekannt
@@ -794,7 +794,7 @@ $$s(C_M) = \frac{\displaystyle\sum_{C\in C_M} \displaystyle\sum_{o \in C} s(o)}{
 \end{itemize}
 \item Verwandtes Problem: Vorhersage (Prediction)
 \begin{itemize}
-\item gesucht ist der Wert für ein numerisches Attribut 
+\item gesucht ist der Wert für ein numerisches Attribut
 \item Methode z.B. Regression
 \end{itemize}
 \end{itemize}
@@ -908,13 +908,13 @@ Kunden-ID & Schulden & Einkommen & Anstellungs- & Risiko \\
 \end{itemize}
 \item \hl{Konstruktion eines Entscheidungsbaums}
 \begin{itemize}
-\item anhand der Trainingsmenge 
-\item Top-Down 
+\item anhand der Trainingsmenge
+\item Top-Down
 \end{itemize}
 \item \hl{Anwendung eines Entscheidungsbaums}
 \begin{itemize}
 \item Durchlauf des Entscheidungsbaum von der Wurzel zu einem der
-  Blätter $\leadsto$ eindeutiger Pfad  
+  Blätter $\leadsto$ eindeutiger Pfad
  \item Zuordnung des Objekts zur Klasse des erreichten Blatts
 \end{itemize}
 \end{itemize}
@@ -999,7 +999,7 @@ Tag & Aussicht & Temperatur & Feuchtigkeit & Wind & Tennisspielen \\
 \frametitle{Entscheidungsbaumkonstruktion}
 
 \begin{itemize}
-\item \hl{Prinzip}: 
+\item \hl{Prinzip}:
 \begin{itemize}
 \item Partitionierung der Datensätze basierend auf einem Attributest
   (Split-Bedingung), der nach einem bestimmtes Kriterium optimiert
@@ -1040,7 +1040,7 @@ Tag & Aussicht & Temperatur & Feuchtigkeit & Wind & Tennisspielen \\
 
 \begin{itemize}
 \item Mehrwege-Split: soviele Partitionen wie Ausprägungen im
-  Wertebereich des Attributs 
+  Wertebereich des Attributs
 \begin{center}
 \includegraphics[scale=.5]{fig7/split-kat1.pdf}
 \end{center}
@@ -1048,7 +1048,7 @@ Tag & Aussicht & Temperatur & Feuchtigkeit & Wind & Tennisspielen \\
 \begin{itemize}
 \item Test der Form \emph{Attribut} $= a$ : genau ein Split
 \item Test der Form \emph{Attribut} $\in M$ : $O(2^m)$ verschiedene
-  Splits bei $m=|M|$  
+  Splits bei $m=|M|$
 \begin{itemize}
 \item Aufteilung der Werte in zwei disjunkte Teilmengen
 \item optimale Partitionierung?
@@ -1116,13 +1116,13 @@ Tag & Aussicht & Temperatur & Feuchtigkeit & Wind & Tennisspielen \\
 \begin{itemize}
 \item eine Menge $T$ von Trainingsobjekten
 \item eine disjunkte, vollständige Partitionierung $T_1, T_2, \dots,
-  T_m$  von $T$ 
+  T_m$  von $T$
 \item $p_i$ die relative Häufigkeit der Klasse $c_i$ in $T$
 \end{itemize}
 \item Gesucht:
 \begin{itemize}
 \item ein Maß der \hl{Unreinheit} einer Menge $S$ von
-  Trainingsobjekten in Bezug  auf  die Klassenzugehörigkeit  
+  Trainingsobjekten in Bezug  auf  die Klassenzugehörigkeit
 \item ein Split von $T$ in $T_1, T_2, \dots, T_m$, der dieses Maß der
   Unreinheit minimiert \\
 $\leadsto$ Informationsgewinn, Gini-Index, Klassifikationsfehler
@@ -1267,7 +1267,7 @@ $$
 \textit{entropy}(T)=-\sum_{i=1}^k p_i \cdot \log p_i
 $$
 \item Maximum ($\log |C|$): Gleichverteilung der Klassen über
-  alle Datensätze 
+  alle Datensätze
 \item Minimum ($0.0$): alle Datensätze gehören zu einer Klasse
 \end{itemize}
 
@@ -1373,7 +1373,7 @@ $$
 \begin{itemize}
 \item misst Klassifikationsfehler pro Knoten
 \item Maximum ($1 - \frac{1}{|C|}$): Gleichverteilung der Klassen über
-  alle Datensätze 
+  alle Datensätze
 \item Minimum ($0.0$): alle Datensätze gehören zu einer Klasse
 
 \end{itemize}
@@ -1395,13 +1395,13 @@ p_{C_1}&=&\frac{0}{6} = 0 \quad p_{C_2}=\frac{6}{6}=1\\
 \begin{eqnarray*}
 p_{C_1}&=&\frac{1}{6} \quad p_{C_2}=\frac{5}{6}\\
 \textit{error}&=&1 - \max(\frac{1}{6}, \frac{5}{6}) = 1 - \frac{5}{6} =
-\frac{1}{6}  
+\frac{1}{6}
 \end{eqnarray*}
 \item $C_1 = 2$, $C_2 = 4$
 \begin{eqnarray*}
 p_{C_1}&=&\frac{2}{6} \quad p_{C_2}=\frac{4}{6}\\
 \textit{error}&=& - \max(\frac{2}{6}, \frac{4}{6}) = 1 - \frac{4}{6} =
-\frac{1}{3}  
+\frac{1}{3}
 \end{eqnarray*}
 \end{itemize}
 \end{frame}
@@ -1429,22 +1429,491 @@ p_{C_1}&=&\frac{2}{6} \quad p_{C_2}=\frac{4}{6}\\
   \end{itemize}
 
   \begin{minted}{python}
-from sklearn.ensemble import RandomForestClassifier 
+from sklearn.ensemble import RandomForestClassifier
 
-cf = RandomForestClassifier(n_estimators=100, 
+cf = RandomForestClassifier(n_estimators=100,
      max_leaf_nodes=20, n_jobs=-1)
 cf.fit(train_data_x, train_data_y)
 pred = cf.predict(test_data_x)
 \end{minted}
 \end{frame}
 
-\section{Regression}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Regression                                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Regression}
+% TODO Verständnisfrage: Warum muss keine zweite Ableitung gebildet werden?
 
 \frame{
-  \frametitle{Überblick}
-  \tableofcontents[currentsection,hidesubsections,firstsection=28]
+	\frametitle{Überblick}
+	\tableofcontents[currentsection,hidesubsections,firstsection=28]
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Regression}
+
+Gegeben:
+\begin{itemize}
+	\item unabhängige Variable $x$
+	\item abhängige Variable $y$
+	\item Grundgesamtheit $G = \{(x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\}$
+\end{itemize}
+
+Gesucht: {\scriptsize (zweidimensionale, lineare Regression)}
+\begin{itemize}
+	\item \glqq{Ausgleichsgerade}
+	\item Funktion zur Vorhersage von $y$ aus $x$
+	\item Parameter $\alpha, \beta$, sodass $y_i = \beta x_i + \alpha$
+\end{itemize}
+
+Abgrenzung zur Klassifikation:
+\begin{itemize}
+	\item abhängige Variable $y$ ist stetig
+	\item reelle Zahlen statt diskrete Klassen
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Beispiel: Körpergröße und Gewicht}
+
+\begin{center}
+	\includegraphics[width=\linewidth]{fig8/artifical.png}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Beispiel: Körpergröße und Gewicht}
+
+Vorgehen:
+\begin{itemize}
+	\item wähle zwei Punkte $(x_1, y_1)$ und $(x_2, y_2)$
+	\item bestimme Steigung \begin{align*} \beta = \tfrac{\Delta y}{\Delta x} = \tfrac{y_2 - y_1}{x_2 - x_1} \end{align*}
+	\item bestimme $y$-Verschiebung \begin{align*} \alpha = y_1 - \beta x_1 \end{align*}
+\end{itemize}
+
+Voraussetzung: \\ Alle Punkte befinden sich perfekt auf einer Geraden.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Die Welt ist nicht perfekt!}
+
+Abweichungen durch
+\begin{itemize}
+	\item Verteilung
+	\item Messfehler
+	\item Rauschen
+	\item Ausreißer
+\end{itemize}
+
+Einführung von Residuen $\epsilon_i \in \mathbb{R}$, sodass
+\begin{align*}
+	y_i = \beta x_i + \alpha - \epsilon_i
+\end{align*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Die Welt ist nicht perfekt!}
+
+\begin{center}
+	\includegraphics[width=\linewidth]{fig8/still-artifical.png}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Die Welt ist nicht perfekt!}
+
+Bisher:
+\begin{itemize}
+	\item bestimme $\alpha, \beta$ aus zwei beliebigen Datenpunkten
+\end{itemize}
+
+Neue Formulierung der Aufgabe:
+\begin{itemize}
+	\item bestimme $\alpha, \beta$ so, dass Residuen \alert{minimal}
+\end{itemize}
+
+Noch zu klären:
+\begin{itemize}
+	\item Ggf. befindet sich kein einziger Punkt exakt auf der entstehenden Geraden! (kein Steigungsdreieck)
+	\item Was heißt minimal?
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Methode der kleinsten absoluten Abweichungen}
+
+\begin{itemize}
+	\item auch \textit{Median-Regression}
+	\item circa 1760 von Rugjer Josip Bošković
+	\item Minimierung der Summe der absoluten Residuen \begin{align*}
+		R = \sum_{i=1}^{n} \left| \epsilon_i \right| = \sum_{i=1}^{n} \left| \beta x_i + \alpha - y_i \right|
+	\end{align*}
+	\item Lösung durch lineare Optimierungsverfahren möglich
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Methode der kleinsten Quadrate}
+
+\hl{Das} Standardverfahren zur Ausgleichsrechnung!
+
+\begin{itemize}
+	\item Adrien-Marie Legendre \begin{itemize}
+		\item 1805 veröffentlicht
+		\item zur Berechnung von Kometenbahnen
+	\end{itemize}
+	\item Carl Friedrich Gauß \begin{itemize}
+		\item zwischen 1795 und 1798
+		\item 1801: Berechnung der Bahn des Zwergplaneten Ceres
+		\item 1809 veröffentlicht
+		\item circa 1820: Vermessung des Königreichs Hannover
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Methode der kleinsten Quadrate}
+
+Ziel: Minimierung der quadratischen Summe der Residuen
+\begin{align*}
+	R^2 = \sum_{i=1}^{n} \epsilon_i^2 = \sum_{i=1}^{n} (\beta x_i + \alpha - y_i)^2
+\end{align*}
+
+Darstellung des Optimierungskriteriums als Funktion in Abhängigkeit von $\alpha$ und $\beta$:
+\begin{align*}
+	f_{\epsilon}(\alpha, \beta) = \sum_{i=1}^{n} \epsilon_i^2 = \sum_{i=1}^{n} (\beta x_i + \alpha - y_i)^2
+\end{align*}
+
+Vorteil: \hl{Differenzierbarkeit}!
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Methode der kleinsten Quadrate}
+
+Bildung der partiellen Ableitungen:
+\begin{align}
+	\frac{\partial}{\partial \alpha} f_{\epsilon}(\alpha, \beta) &= 2 * \sum_{i=1}^{n} \beta x_i + \alpha - y_i \\
+	\frac{\partial}{\partial \beta} f_{\epsilon}(\alpha, \beta) &= 2 * \sum_{i=1}^{n} x_i * (\beta x_i + \alpha - y_i)
+\end{align}
+
+\setcounter{equation}{0}
+
+Suche nach Nullstellen zur Extremwertbestimmung:
+\begin{align}
+	\sum_{i=1}^{n} y_i &= \beta * \sum_{i=1}^{n} x_i + n * \alpha \\
+	\sum_{i=1}^{n} x_i y_i &= \beta * \sum_{i=1}^{n} x_i^2 + \alpha * \sum_{i=1}^{n} x_i
+\end{align}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Methode der kleinsten Quadrate}
+
+Löse das letzte lineare Gleichungssystem nach $\beta$ und $\alpha$ auf:
+\begin{align*}
+	\beta &= \dfrac{\sum_{i=1}^{n} (x_i - \overline{x}) * (y_i - \overline{y})}{\sum_{i=1}^{n} (x_i - \overline{x})^2} \\
+	\alpha &= \overline{y} - \beta \overline{x}
+\end{align*}
+
+mit
+\begin{align*}
+	\overline{x} &= \tfrac{1}{n} \sum_{i=1}^{n} x_i \\
+	\overline{y} &= \tfrac{1}{n} \sum_{i=1}^{n} y_i
+\end{align*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Methode der kleinsten Quadrate}
+
+Umsetzung mit Pandas:
+\begin{minted}{python}
+x = df['height']
+y = df['weight']
+x_ = x.mean()
+y_ = y.mean()
+
+beta = ((x - x_) * (y - y_)).sum() / ((x - x_) ** 2).sum()
+alpha = y_ - beta * x_
+\end{minted}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Methode der kleinsten Quadrate}
+
+(Integrierte) Umsetzung mit Plotly:
+\begin{minted}{python}
+fig = px.scatter(df, x='height', y='weight',
+                 labels={'height': 'Größe', 'weight': 'Gewicht'},
+                 trendline='ols')
+\end{minted}
+
+\begin{center}
+\includegraphics[width=0.6\linewidth]{fig8/artifical-ols.png}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Höherdimensionale, lineare Regression}
+
+Gegeben:
+\begin{itemize}
+	\item unabhängige Variable\hl{n} $x^{(1)}, x^{(2)}, \dots, x^{(d)}$
+	\item abhängige Variable $y$
+	\item Grundgesamtheit $G = \{(x^{(1)}_1, \dots, x^{(d)}_1, y_1), \dots, (x^{(1)}_n, \dots, x^{(d)}_n, y_n)\}$
+\end{itemize}
+
+Gesucht:
+\begin{itemize}
+	\item Funktion zur Vorhersage von $y$ aus $x^{(1)}, \dots, x^{(d)}$
+	\item Parameter $\alpha_0, \alpha_1, \dots, \alpha_d$, sodass \begin{align*}
+		y_i = \alpha_0 + \alpha_1 x^{(1)}_i + \dots + \alpha_d x^(d)_i
+	\end{align*}
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Höherdimensionale, lineare Regression}
+
+\begin{itemize}
+	\item Formulierung der Residuen: \begin{align*}
+		r_i = a_0 + a_1 x^{(1)}_i + \dots + a_d x^{(d)}_i - y_i
+	\end{align*}
+	\item Aufstellen der Residuenfunktion $f_\epsilon(a_0, \dots, a_d)$
+	\item Bildung der partiellen Ableitungen
+	\item Suche nach Nullstellen und Auflösen des LGS
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven}
+
+Bisher wurden ausschließlich Geraden und (Hyper-) Ebenen bestimmt.
+
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{fig8/squared.png}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven}
+
+Gegeben:
+\begin{itemize}
+	\item unabhängige Variable $x$
+	\item abhängige Variable $y$
+	\item Grundgesamtheit $G = \{(x_1, y_1), \dots, (x_n, y_n)\}$
+	\item \hl{Polynomialer Zusammenhang} \begin{align*}
+		y = \phi(x, \alpha_0, \dots, \alpha_k) = \alpha_0 + \alpha_1 x + \alpha_2 x^2 + \dots + \alpha_k x^k
+	\end{align*}
+\end{itemize}
+
+Gesucht:
+\begin{itemize}
+	\item Funktion zur Vorhersage von $y$ aus $x$
+	\item Parameter $\alpha_0, \alpha_1, \dots, \alpha_k$, sodass \begin{align*}
+		y_i = \phi(x_i, a_0, \dots, a_k) = \alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 + \dots + \alpha_k x_i^k
+	\end{align*}
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven}
+
+\begin{itemize}
+	\item Formulierung der Residuen: \begin{align*}
+		r_i = \alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 + \dots + \alpha_k x^k_i - y_i
+	\end{align*}
+	\item Aufstellen der Residuenfunktion $f_\epsilon(\alpha_0, \dots, \alpha_k)$
+	\item Bildung der partiellen Ableitungen
+	\item Suche nach Nullstellen und Auflösen des LGS
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven: Quadratisches Polynom}
+
+Formulierung der Residuen: \begin{align*}
+	r_i = \alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 - y_i
+\end{align*}
+
+Aufstellen der Residuenfunktion: \begin{align*}
+	f_\epsilon(\alpha_0, \alpha_1, \alpha_2) = \sum_{i=1}^{n} r_i^2 = \sum_{i=1}^{n} (\alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 - y_i)^2
+\end{align*}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven: Quadratisches Polynom}
+
+Bildung der partiellen Ableitungen:
+\setcounter{equation}{0}
+\begin{align}
+	\frac{\partial}{\partial \alpha_0} f_{\epsilon}(\alpha_0, \alpha_1, \alpha_2) &= 2 * \sum_{i=1}^{n} \alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 - y_i \\
+	\frac{\partial}{\partial \alpha_1} f_{\epsilon}(\alpha_0, \alpha_1, \alpha_2) &= 2 * \sum_{i=1}^{n} x_i * (\alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 - y_i) \\
+	\frac{\partial}{\partial \alpha_2} f_{\epsilon}(\alpha_0, \alpha_1, \alpha_2) &= 2 * \sum_{i=1}^{n} x_i^2 * (\alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 - y_i)
+\end{align}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven: Quadratisches Polynom}
+
+Suche nach Nullstellen:
+\setcounter{equation}{0}
+\begin{alignat}{3}
+	\sum_{i=1}^{n} y_i &= \alpha_0 * n &&+ \alpha_1 * \sum_{i=1}^{n} x_i &&+ \alpha_2 * \sum_{i=1}^{n} x_i^2 \\
+	\sum_{i=1}^{n} x_i y_i &= \alpha_0 * \sum_{i=1}^{n} x_i &&+ \alpha_1 * \sum_{i=1}^{n} x_i^2 &&+ \alpha_2 * \sum_{i=1}^{n} x_i^3 \\
+	\sum_{i=1}^{n} x_i^2 y_i &= \alpha_0 * \sum_{i=1}^{n} x_i^2 &&+ \alpha_1 * \sum_{i=1}^{n} x_i^3 &&+ \alpha_2 * \sum_{i=1}^{n} x_i^4
+\end{alignat}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven: Quadratisches Polynom}
+
+Umformung:
+\setcounter{equation}{0}
+\begin{alignat*}{3}
+& A &&* x &&= b \\
+& \begin{pmatrix}
+	n & \sum_{i=1}^{n} x_i & \sum_{i=1}^{n} x_i^2 \\
+	\sum_{i=1}^{n} x_i & \sum_{i=1}^{n} x_i^2 & \sum_{i=1}^{n} x_i^3 \\
+	\sum_{i=1}^{n} x_i^2 & \sum_{i=1}^{n} x_i^3 & \sum_{i=1}^{n} x_i^4
+\end{pmatrix} &&* \begin{pmatrix}
+	\alpha_0 \\
+	\alpha_1 \\
+	\alpha_2
+\end{pmatrix} &&= \begin{pmatrix}
+	\sum_{i=1}^{n} y_i \\
+	\sum_{i=1}^{n} x_i y_i \\
+	\sum_{i=1}^{n} x_i^2 y_i
+\end{pmatrix}
+\end{alignat*}
+
+\vspace{1cm}
+
+Lösung des linearen Gleichungssystems \dots
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Nichtlineare Ausgleichskurven: Quadratisches Polynom}
+
+Umsetzung mit Pandas und Numpy:
+
+\begin{minted}{python}
+A = np.zeros((3, 3))
+for row in range(3):
+   for col in range(3):
+      A[row,col] = (df['x'] ** (row+col)).sum()
+
+b = np.zeros(3)
+   for row in range(3):
+      b[row] = ((df['x'] ** row) * df['y']).sum()
+
+x = np.linalg.solve(A, b)  # [a_0, a_1, a_2]
+\end{minted}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Nichtlineare Ausgleichskurven: Quadratisches Polynom}
+
+\begin{center}
+\includegraphics[width=\textwidth]{fig8/squared-fit.png}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Overfitting}
+
+\vfill
+\begin{center}
+Verständnisfrage:
+\vspace{1mm}
+
+{\Large Wie groß ist $R^2$, wenn $k \to \infty$?}
+\end{center}
+\vfill
+
+\end{frame}
+
+% TODO k=n Folie
+
+% TODO overfitting etc
+% TODO neuronale Netze
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Gütemaße}
 
@@ -1490,9 +1959,9 @@ für prädiktive Modelle (Regression, Klassifikation) anhand von Testdaten (nich
     \item Wahrheitsmatrix (Form der Kontingenztabelle)
     \item Precision (Genauigkeit): $P = \frac{TP}{TP + FP}$
     \item Recall (Trefferquote): $R = \frac{TP}{TP + FN}$
-    \item F$_1$-Maß: harmonisches Mittel aus Precision und Recall $F_1 = 2 \cdot \frac{P \cdot R}{P + R}$ 
+    \item F$_1$-Maß: harmonisches Mittel aus Precision und Recall $F_1 = 2 \cdot \frac{P \cdot R}{P + R}$
   \end{itemize}
-\end{itemize} 
+\end{itemize}
 }
 
 
@@ -1512,11 +1981,11 @@ für prädiktive Modelle (Regression, Klassifikation) anhand von Testdaten (nich
   \frametitle{Precision und Recall mit scikit}
 
   \begin{minted}{python}
-    from sklearn.metrics import precision_score, 
+    from sklearn.metrics import precision_score,
          recall_score, f1_score
-    
-    precision_score(train_target, train_pred) 
-    recall_score(train_target, train_pred) 
+
+    precision_score(train_target, train_pred)
+    recall_score(train_target, train_pred)
     f1_score(train_target, train_pred)
   \end{minted}
 \end{frame}
@@ -1528,7 +1997,7 @@ für prädiktive Modelle (Regression, Klassifikation) anhand von Testdaten (nich
 
   \begin{itemize}
     \item eigentliches Ziel: hohe Werte für Precision \hl{und} Recall
-    \item allerdings nicht möglich 
+    \item allerdings nicht möglich
     \item Schwellwert für Entscheidungen entweder in Richtung Precision \hl{oder} Recall
     \item Priorität für Precision oder Recall abhängig vom Anwendungsfall
   \end{itemize}
