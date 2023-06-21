@@ -1444,7 +1444,6 @@ pred = cf.predict(test_data_x)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Regression}
-% TODO Verständnisfrage: Warum muss keine zweite Ableitung gebildet werden?
 
 \frame{
 	\frametitle{Überblick}
@@ -1465,7 +1464,7 @@ Gegeben:
 
 Gesucht: {\scriptsize (zweidimensionale, lineare Regression)}
 \begin{itemize}
-	\item \glqq{Ausgleichsgerade}
+	\item \glqq{}Ausgleichsgerade\grqq{}
 	\item Funktion zur Vorhersage von $y$ aus $x$
 	\item Parameter $\alpha, \beta$, sodass $y_i = \beta x_i + \alpha$
 \end{itemize}
@@ -1658,6 +1657,22 @@ mit
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}
+\frametitle{Methode der kleinsten Quadrate}
+
+\vfill
+\begin{center}
+	Verständnisfrage:
+	\vspace{1mm}
+	
+	{\Large Warum kann die zweite Ableitung ignoriert werden?}
+\end{center}
+\vfill
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}[fragile]
 \frametitle{Methode der kleinsten Quadrate}
 
@@ -1708,7 +1723,7 @@ Gesucht:
 \begin{itemize}
 	\item Funktion zur Vorhersage von $y$ aus $x^{(1)}, \dots, x^{(d)}$
 	\item Parameter $\alpha_0, \alpha_1, \dots, \alpha_d$, sodass \begin{align*}
-		y_i = \alpha_0 + \alpha_1 x^{(1)}_i + \dots + \alpha_d x^(d)_i
+		y_i = \alpha_0 + \alpha_1 x^{(1)}_i + \dots + \alpha_d x^{(d)}_i
 	\end{align*}
 \end{itemize}
 
@@ -1754,7 +1769,7 @@ Gegeben:
 	\item abhängige Variable $y$
 	\item Grundgesamtheit $G = \{(x_1, y_1), \dots, (x_n, y_n)\}$
 	\item \hl{Polynomialer Zusammenhang} \begin{align*}
-		y = \phi(x, \alpha_0, \dots, \alpha_k) = \alpha_0 + \alpha_1 x + \alpha_2 x^2 + \dots + \alpha_k x^k
+		y = \varphi(x, \alpha_0, \dots, \alpha_k) = \alpha_0 + \alpha_1 x + \alpha_2 x^2 + \dots + \alpha_k x^k
 	\end{align*}
 \end{itemize}
 
@@ -1762,7 +1777,7 @@ Gesucht:
 \begin{itemize}
 	\item Funktion zur Vorhersage von $y$ aus $x$
 	\item Parameter $\alpha_0, \alpha_1, \dots, \alpha_k$, sodass \begin{align*}
-		y_i = \phi(x_i, a_0, \dots, a_k) = \alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 + \dots + \alpha_k x_i^k
+		y_i = \varphi(x_i, a_0, \dots, a_k) = \alpha_0 + \alpha_1 x_i + \alpha_2 x_i^2 + \dots + \alpha_k x_i^k
 	\end{align*}
 \end{itemize}
 
@@ -1821,10 +1836,10 @@ Bildung der partiellen Ableitungen:
 
 Suche nach Nullstellen:
 \setcounter{equation}{0}
-\begin{alignat}{3}
-	\sum_{i=1}^{n} y_i &= \alpha_0 * n &&+ \alpha_1 * \sum_{i=1}^{n} x_i &&+ \alpha_2 * \sum_{i=1}^{n} x_i^2 \\
-	\sum_{i=1}^{n} x_i y_i &= \alpha_0 * \sum_{i=1}^{n} x_i &&+ \alpha_1 * \sum_{i=1}^{n} x_i^2 &&+ \alpha_2 * \sum_{i=1}^{n} x_i^3 \\
-	\sum_{i=1}^{n} x_i^2 y_i &= \alpha_0 * \sum_{i=1}^{n} x_i^2 &&+ \alpha_1 * \sum_{i=1}^{n} x_i^3 &&+ \alpha_2 * \sum_{i=1}^{n} x_i^4
+\begin{alignat}{4}
+	& \sum_{i=1}^{n} y_i &&= \alpha_0 * n &&+ \alpha_1 * \sum_{i=1}^{n} x_i &&+ \alpha_2 * \sum_{i=1}^{n} x_i^2 \\
+	& \sum_{i=1}^{n} x_i y_i &&= \alpha_0 * \sum_{i=1}^{n} x_i &&+ \alpha_1 * \sum_{i=1}^{n} x_i^2 &&+ \alpha_2 * \sum_{i=1}^{n} x_i^3 \\
+	& \sum_{i=1}^{n} x_i^2 y_i &&= \alpha_0 * \sum_{i=1}^{n} x_i^2 &&+ \alpha_1 * \sum_{i=1}^{n} x_i^3 &&+ \alpha_2 * \sum_{i=1}^{n} x_i^4
 \end{alignat}
 
 \end{frame}
@@ -1873,8 +1888,8 @@ for row in range(3):
       A[row,col] = (df['x'] ** (row+col)).sum()
 
 b = np.zeros(3)
-   for row in range(3):
-      b[row] = ((df['x'] ** row) * df['y']).sum()
+for row in range(3):
+   b[row] = ((df['x'] ** row) * df['y']).sum()
 
 x = np.linalg.solve(A, b)  # [a_0, a_1, a_2]
 \end{minted}
@@ -1902,16 +1917,147 @@ x = np.linalg.solve(A, b)  # [a_0, a_1, a_2]
 Verständnisfrage:
 \vspace{1mm}
 
-{\Large Wie groß ist $R^2$, wenn $k \to \infty$?}
+{\Large Wie groß ist $R^2$, wenn $k = n$?}
 \end{center}
 \vfill
 
 \end{frame}
 
-% TODO k=n Folie
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% TODO overfitting etc
-% TODO neuronale Netze
+\begin{frame}
+\frametitle{Overfitting}
+
+\begin{center}
+	\includegraphics[height=0.75\textheight]{fig8/overfitting-wikipedia.png} \\
+	\scriptsize \ehref{https://commons.wikimedia.org/wiki/File:Overfitting_regression.png}{\copyright{} GongonR} \hspace{4mm} \ehref{https://creativecommons.org/licenses/by-sa/4.0/deed.en}{(CC BY-SA 4.0)}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Overfitting}
+
+\vfill
+
+\begin{center}
+	\includegraphics[width=\textwidth]{fig8/traintest-wikipedia.png} \\
+	\scriptsize \ehref{https://commons.wikimedia.org/wiki/File:Traintest.svg}{\copyright{} Skbkekas} \hspace{4mm} \ehref{https://creativecommons.org/licenses/by/3.0/deed.en}{(CC BY 3.0)}
+\end{center}
+
+\vfill
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Regression mit neuronalen Netzen}
+
+\begin{minipage}[t]{0.6\textwidth}\vspace{0pt}
+	\begin{itemize}
+		\item Supervised Learning
+		\item Aufbau durch Neuronen in Schichten
+		\item vollständige Verbundenheit
+		\item jeder Verbindung wird ein Gewicht zugeordnet
+		\item Anpassung der Gewichte durch Vergleich von Ist- und Soll-Ausgabe
+		\item Schrittweise Anpassung an den Datensatz
+	\end{itemize}
+\end{minipage}%
+\begin{minipage}[t]{0.4\textwidth}\vspace{0pt}
+	\hspace{0.1\linewidth}\includegraphics[width=0.9\linewidth]{fig8/nnsample.png}
+\end{minipage}%
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Regression mit neuronalen Netzen}
+
+\begin{minted}{python}
+import torch
+import torch.nn as nn
+
+model = nn.Sequential(
+   nn.Linear(1, 10),
+   nn.ReLU(),
+   nn.Linear(10, 1)
+)
+
+loss_fn = nn.MSELoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.1)
+\end{minted}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Regression mit neuronalen Netzen}
+
+\begin{minted}{python}
+for epoch in range(80):
+   optimizer.zero_grad()
+   loss = 0
+
+   # Ausführung in Batches ist deutlich effizienter!
+   for _, (x, y) in df.iterrows():
+      x_t = torch.tensor([x])
+      y_t = torch.tensor([y])
+
+      y_pred = model(x_t)
+      loss += loss_fn(y_pred, y_t)
+
+   loss.backward()
+   optimizer.step()
+\end{minted}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Regression mit neuronalen Netzen}
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{fig8/nn_e1.png}%
+	\includegraphics[width=0.5\textwidth]{fig8/nn_e20.png}
+	\includegraphics[width=0.5\textwidth]{fig8/nn_e40.png}%
+	\includegraphics[width=0.5\textwidth]{fig8/nn_e80.png}
+\end{center}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Regression mit neuronalen Netzen}
+
+\begin{itemize}
+	\item keine Bestimmung des Polynomgrades notwendig
+	\item neuronales Netz identifiziert keine Polynome
+	\item Repräsentation der Regressionskurve durch Gewichte
+	\item Anzahl der Gewichte (ua.) begrenzen die Anpassungsfähigkeit
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Regression mit neuronalen Netzen}
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{fig8/nn_quartic_e1.png}%
+	\includegraphics[width=0.5\textwidth]{fig8/nn_quartic_e50.png}
+	\includegraphics[width=0.5\textwidth]{fig8/nn_quartic_e250.png}%
+	\includegraphics[width=0.5\textwidth]{fig8/nn_quartic_e2000.png}
+\end{center}
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
