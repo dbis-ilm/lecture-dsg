@@ -16,6 +16,8 @@
     \end{notebox}
     }
 
+    \small{Material basierend auf: Michael Gertz: Text Analytics WS 2020/21, Uni Heidelberg}
+
 \end{frame}
 
 %----------------------------------------------------
@@ -27,7 +29,6 @@
     \includegraphics[width=\textwidth]{fig8/motivation-1.pdf}
     \end{center}
 
-\small{Thanks to Michael Gertz: Text Analytics WS 2020/21, Uni Heidelberg}
 \end{frame}
 
 %----------------------------------------------------
@@ -393,7 +394,7 @@ wo_stopwords = [word for word in tokens
 \begin{frame}
     \frametitle{Motivation /2}
 
-\hl{Ziel:} Abbildung von Textelementebn in einen einheitlichen Semantikraum zur Unterstützung effizienter, skalierbarer numerischer Berechnung
+\hl{Ziel:} Abbildung von Textelementen in einen einheitlichen Semantikraum zur Unterstützung effizienter, skalierbarer numerischer Berechnung
 als Basis für verschiedene Textanalyseaufgaben
 
 % Bild von Michael
@@ -456,8 +457,10 @@ sentences = sent_tokenize(text)
     \end{minted}
 \end{frame}
 
+%----------------------------------------------------
+
 \begin{frame}[fragile]
-    \frametitle{Bag-of-Words-Modell}
+    \frametitle{Bag-of-Words-Modell /2}
      
     \begin{minted}{python}
 words = []
@@ -474,6 +477,102 @@ words = sorted(list(set(words)))
     \end{minted}
 \end{frame}
     
+ %---------------------------------------------------------------------
+ 
+
+\begin{frame}[fragile]
+    \frametitle{Bag-of-Words-Modell: Beispiel}
+
+    \begin{itemize}
+    \item für Dokumentenmenge $D$ aus Dokumenten $d_1, \dots d_k$ Konstruktion einer Term-Dokument-Matrix
+    \item Beispiel (Manning, Information Retrieval and Web Search, Lecture 6)
+    \end{itemize}
+{\tiny
+    \begin{tabular}{ccccccc}
+    & Antony and Cleopatra & Julius Caesar & The Tempest & Hamlet & Othello & Macbeth \\
+    \hline
+    Antony &157&73&0&0&0&0 \\
+Brutus&4&157&0&1&0&0\\
+Caesar&232&227&0&2&1&1 \\
+Calpurnia&0&10&0&0&0&0\\
+Cleopatra&57&0&0&0&0&0\\
+mercy&2&0&3&5&5&1\\
+worser&2&0&1&1&1&0
+    \end{tabular}}
+\end{frame}
+
+ %---------------------------------------------------------------------
+ 
+ \begin{frame}
+\frametitle{TF-IDF-Maß}
+
+
+absolute Häufigkeit in Bag-of-Words- oder Vektorraum-Modell ist nur bedingt aussagefähig
+    \begin{itemize}
+        \item alle Terme (Wörter) werden mit gleichem Gewicht betrachtet $\leadsto$ für Relevanzbewertung wenig brauchbar
+        \item selten auftretende Terme sind eigentlich informativer als häufig auftretende
+        \item Relevanz wächst nicht proportional zur Häufigkeit eines Terms
+        \item Dokument, das einen Term 10x enthält ist relevanter als ein Dokument, das diesen Term nur 1x enthält, aber auch nicht 10x relevanter
+    \end{itemize}
+
+\end{frame}
+
+ %---------------------------------------------------------------------
+ 
+ \begin{frame}
+    \frametitle{TF-IDF-Maß /2}
+  
+\hl{Ziel:} Wichtungsfunktion, die Dokument- \textbf{und} Korpusstatistiken berücksichtigt
+
+\begin{itemize}
+    \item \textbf{Term Frequency} (Termhäufigkeit) $tf_{t,d}$ eines Terms $t$ im Dokument $d$ = Häufigkeit des Auftretens von $t$ in $d$
+
+    \item \textbf{Document Frequency} (Dokumenthäufigkeit) $df_t$ ist die Anzahl der Dokumente, die $t$ enthalten
+    \item \textbf{Inverse Document Frequency} (Inverse Dokumenthäufigkeit) $idf_t$ bezüglich einer Dokumentkollektion $D$ mit $|D| = k$: 
+    $$
+    idf_t = \log \big(\frac{k}{df_t})
+    $$
+    \begin{itemize}
+        \item $\log$ dämpft den Einfluss großer Werte
+        \item pro Term $t$ einer Dokumentkollektion ein eigener $idf_t$-Wert
+   %     \item Terme, die in vielen Dokumenten vorkommen, sind weniger aussagekräftig für den Inhalt eines gegebenen Dokumentes
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+ 
+ \begin{frame}
+    \frametitle{TF-IDF-Maß /3}
+  
+TF-IDF: $$w_{t,d} = tf_{t,d} \cdot idf_t$$
+
+Information Retrieval: Rankingfunktion für Dokument $d$ und Anfrage $q$ (Termmenge) 
+$$\textit{score}(q, d) = \sum_{t \in q \cap d} w_{t,d}$$
+
+\end{frame}
+
+ %---------------------------------------------------------------------
+
+ \begin{frame}
+    \frametitle{TF-IDF-Maß: Beispiel}  
+
+        (Manning, Information Retrieval and Web Search, Lecture 6)
+
+{\tiny
+    \begin{tabular}{ccccccc}
+    & Antony and Cleopatra & Julius Caesar & The Tempest & Hamlet & Othello & Macbeth \\
+    \hline
+    Antony&5.25&3.18&0&0&0&0.35\\
+Brutus&1.21&6.1&0&1&0&0\\
+Caesar&8.59&2.54&0&1.51&0.25&0\\
+Calpurnia&0&1.54&0&0&0&0\\
+Cleopatra&2.85&0&0&0&0&0\\
+mercy&1.51&0&1.9&0.12&5.25&0.88\\
+worser&1.37&0&0.11&4.15&0.25&1.95
+    \end{tabular}}
+ \end{frame}
  %---------------------------------------------------------------------
     
 \begin{frame}
@@ -715,11 +814,11 @@ predicted = clf.predict(X_new_tfidf)
 
 for doc, category in zip(docs_new, predicted):
     print('\%r => \%s' % (doc, train.target_names[category]))
+
+# 'Covid-19 is a bad disease.' => sci.med
+# 'OpenGL on the GPU is fast' => comp.graphics
     \end{minted}
-    
-    \texttt{'Covid-19 is a bad disease.' => sci.med}\\
-    \texttt{'OpenGL on the GPU is fast' => comp.graphics}
-    
+
 \end{frame}
     
 %---------------------------------------------------------------------
@@ -752,26 +851,170 @@ km.fit(X)
     
 \section{Worteinbettung \& Sprachmodelle}
 
-\section{Anwendungsfälle: Sentimentanalyse, Schlüsselwort-Extraktion, Topic Modeling}
+%---------------------------------------------------------------------
 
-%--------------------
+\begin{frame}
+    \frametitle{Worteinbettung: Motivation}
+
+    \begin{itemize}
+\item Vektorraum-Modell (z.B. mit One-Hot-Kodierung) erfassen keine Semantik von Wörtern sowie keine (semantische) Ähnlichkeit 
+\item Ziel: Kodierung der Ähnlichkeit in Vektoren der Wörter basierend auf Idee der \hl{Distributionalen Semantik} (=Konzept der Linguistik)
+
+\hl{Die Bedeutung eines Wortes ergibt sich aus den Wörtern, die häufig zusammen damit auftreten.}
+
+\item Konstruktion einer Vektorrepräsentation für ein Wort durch Nutzung der vielen Kontexte in einem Korpus
+    \end{itemize}
+
+    {\small
+    \begin{tabbing}
+    \emph{Unter} \fbox{Studium} \emph{wird primär das wissenschaftliche Lernen und Forschen \dots} \\
+    \emph{\dots Tipps rund ums} \fbox{Studium} \emph{und zur Studienwahl.} \\
+    \emph{Mein} \fbox{Studium} \emph{an der TU Ilmenau \dots}
+    \end{tabbing}}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Worteinbettung (Word Embeddings)}
+
+ 
+        \begin{itemize}
+        \item Dichtevektor als Repräsentation jedes Wortes in einem Korpus -- wird mithilfe von ML aus großen Korpus erlernt
+
+        $$\text{Studium} = \left( \begin{array}{c}
+        0.15 \\ 
+        0.28 \\
+        -0.32 \\ 
+        0.01 \\
+        -0.41 \\
+        0.22 \end{array}
+        \right)$$
+
+        \item Dimensionalität des Vektors ist Parameter beim Lernprozess
+        \item Word Vector, Word Embedding, Word Representation
+        \item berücksichtigen semantische Ähnlichkeit von Wörtern (verwandte Wörter treten in ähnlichen Kontexten auf)
+        \end{itemize}
+
+\end{frame}
+
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Ähnlichkeit von Wörtern}
+
+    \includegraphics[width=\linewidth]{fig8/wordembedding}
+    
+    {\tiny(\url{https://devopedia.org/word-embedding})}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Word2Vec}
+
+    \begin{itemize}
+        \item     Framework zum Erlernen der Wortvektoren -- vorgestellt von 
+    Tomas Mikolov, Ilya Sutskever, Kai Chen, Gregory S. Corrado, Jeffrey Dean:
+    Distributed Representations of Words and Phrases and their Compositionality, NIPS 2013.
+    \item Berechnung der Wahrscheinlichkeiten $P(w_{t+j}|w_t)$
+    \end{itemize}
+
+    \centering\includegraphics[width=\linewidth]{fig8/we_computing.pdf}
+
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}[fragile]
+    \frametitle{Word2Vec: Beispiel}
+
+\begin{minted}{python}
+from gensim.models import Word2Vec
+from gensim.test.utils import common_texts
+model = Word2Vec(sentences=common_texts,
+    vector_size=100, window=5, min_count=1, workers=4) 
+# Ausgabe von ähnlichen Worten zu einer Eingabe
+sims = model.wv.most_similar('computer', topn=10)
+\end{minted}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Worteinbettung: Anwendungen}
+
+    \begin{itemize}
+        \item Vorhersage von Wörtern, Satzteilen ... ("`Füllen von Lückentexten"')
+
+        \textit{Ich konnte nicht zur Vorlesung kommen, weil ich \dots\xspace war.}
+        
+        \item Übersetzung von Sprachen (siehe DeepL, \dots)
+        \item Question Answering, Chatbots, \dots
+        \item Suchmaschinen, Recommender Systems, \dots
+    \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Sprachmodelle}
+
+    \begin{itemize}
+     \item Worteinbettung beachtet keine Mehrdeutigkeiten (Homonyme): für jedes Wort wird nur ein Vektor berechnet, unabhängig davon, ob es mehrere Bedeutungen gibt (Bank, Sitzmöbel versus. Bank, Finanzinstitut)
+     \item Abhilfe: Transformer-basierte (Deep Learning) Sprachmodelle mit kontextabhängigen Repräsentionen (auf Satzebene)
+     \item Beispiele:
+     \begin{itemize}
+        \item BERT (Bidirectional Encoder Representations from Transformers) von Google 2018
+     \item GPT (Generative Pretrained Transformer) von OpenAI 2019
+    \end{itemize}
+    \item Anwendungen: Textgenerierung, Chatbots, Erzeugung von Zusammenfassungen, \dots
+    \end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\section{Anwendungsfälle: Sentimentanalyse, Keyphrase-Extraktion, Topic Modeling}
+
+%---------------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Sentimentanalyse}
 
 \begin{itemize}
 	\item Sentiment = Empfindung, Gefühl
-	\item Extraktion von Stimmung (Empfindung, Gefühl) aus Text
-	\item Kodierung: \begin{itemize}
-		\item[-1] negativ
-		\item[0] neutral
-		\item[+1] positiv
-	\end{itemize}
+	\item \hl{Ziel:} Extraktion von Stimmung (Empfindung, Gefühl) aus Texten (z.B. Social Media, Produkt-Reviews, Nachrichten)
+	\item Kodierung: negativ = -1, neutral = 0, positiv = +1
+
 \end{itemize}
 
+$$
+\textit{Sentiment}(Text) = \sum_{t \in \textit{Text}}^{|Text|} \textit{Sentiment}(t)
+$$
+
+$$
+\textit{Sentiment}(t) = \begin{cases}
+    +1 & \text{positiv} \\
+    -1 & \text{negativ} \\
+    0 & \text{neutral}
+\end{cases}
+$$
+% Formeln??
 \end{frame}
 
-%--------------------
+%---------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Sentimentanalyse: Verfahren}
+
+    \includegraphics[width=0.9\linewidth]{fig8/sentiment}
+    \tiny{(Walaa Medhat, Ahmed Hassan, Hoda Korashy. Sentiment analysis algorithms and applications: A survey (2014))}
+% Paper: Fig. 4
+\end{frame}
+
+%---------------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Sentimentanalyse: Naiver Ansatz}
@@ -797,7 +1040,7 @@ Diese & Serie &     & einfach &     & Unsinn  \\
 Summe ist negativ $\rightarrow$ negative Stimmung
 \end{frame}
 
-%--------------------
+%---------------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Sentimentanalyse: Naiver Ansatz}
@@ -815,23 +1058,46 @@ Nachteil des lexikonbasierten Ansatzes:
 \end{itemize}
 \end{frame}
 
-%--------------------
+%---------------------------------------------------------------------
 
 \begin{frame}
 \frametitle{Sentimentanalyse: Naiver Ansatz}
 
-Beispiel: \textbf{kurz}
+\begin{itemize}
+    \item Bedeutung nicht immer eindeutig
+\item Beispiel: \textbf{kurz}
 \begin{enumerate}
 	\item Die Wartezeit war \textbf{kurz}. (+1)
 	\item Der Film war \textbf{kurz}. (0)
-	\item Der Lahmacun war \textbf{kurz}. (-1)
+	\item Das Glück war \textbf{kurz}. (-1)
 \end{enumerate}
+\end{itemize}
 \end{frame}
 
-%--------------------
+
+%---------------------------------------------------------------------
+
+\begin{frame}[fragile]
+    \frametitle{Sentimentanalyse: Beispiel}
+
+\begin{minted}{python}
+from textblob import TextBlob    
+blob = TextBlob('I really like the new design of your website!')
+
+print(blob.sentiment)
+
+# Sentiment(polarity=0.18522727272727274, 
+#           subjectivity=0.32727272727272727)
+\end{minted}
+
+\end{frame}    
+
+%---------------------------------------------------------------------
 
 \begin{frame}[fragile]
 \frametitle{Sentimentanalyse: Vortrainierte Modelle}
+
+Basis: PyTorch, TensorFlow, \dots
 
 \begin{minted}{python}
 from transformers import pipeline
@@ -851,40 +1117,86 @@ sentiment_pipeline([
 
 %--------------------
 
-\begin{frame}[fragile]
-\frametitle{Schlüsselwort-Extraktion}
+\begin{frame}
+\frametitle{Keyphrase/Keyword-Extraktion}
 
-Schlüsselwörter beschreiben das Thema eines Textes.
 
-\vspace{\baselineskip}
-
-\textit{Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much. They were the last people you'd expect to be involved in anything strange or mysterious, because they just didn't hold with such nonsense.} {\scriptsize (Harry Potter and the Sorcerer's Stone)}
-
-$\rightarrow$ Dursley; four; Privet Drive
+\begin{itemize}
+    \item Extraktion der wichtigsten Terme, die im Text vorkommen
+    \item Nicht zu Verwechseln mit Keyword Assignment $\rightarrow$ Text Classification
+    \item Zusammenfassung und Themenbeschreibung eines Textes
+    \item unüberwachte und überwachte Verfahren
+    \end{itemize}
+    
 \end{frame}
+    
+%---------------------------------------------------------------------
+ 
+\begin{frame}
+    \frametitle{Keyphrase Extraktion: Unüberwachte Verfahren}
 
-%--------------------
+    \centering\includegraphics[width=0.95\linewidth]{fig8/kpe_unsupervised}
+    
+    {\tiny (Eirini Papagiannopoulou, Grigorios Tsoumakas. A Review of Keyphrase Extraction (2019))}
 
+  
+\end{frame}
+    
+%---------------------------------------------------------------------
+ 
+\begin{frame}
+    \frametitle{Keyphrase Extraktion: Unüberwachte Verfahren /2}
+
+    \textbf{Prinzip:}
+    \begin{itemize}
+        \item Kandidatengenerierung durch Heuristiken (einzelne Wörter)
+        \item Ranking der Kandidaten (z.B. durch TF-IDF)
+        \item Zusammensetzung der Keyphrases aus den höchstgerankten Kandidaten
+    \end{itemize}
+\end{frame}
+    
+%---------------------------------------------------------------------
+ 
+
+\begin{frame}
+    \frametitle{Keyphrase Extraktion: Überwachte Verfahren}
+
+    \includegraphics[width=0.95\linewidth]{fig8/kpe_supervised}
+
+    {\tiny (Eirini Papagiannopoulou, Grigorios Tsoumakas. A Review of Keyphrase Extraction (2019))}
+
+    \textbf{Prinzip:}
+\begin{itemize}
+\item Binärer Klassifikator: Entscheidung, ob Kandidat eine Keyphrase ist oder nicht
+\end{itemize}
+\end{frame}
+    
+%---------------------------------------------------------------------
+ 
 \begin{frame}[fragile]
-\frametitle{Schlüsselwort-Extraktion}
+    \frametitle{Keyphrase Extraktion: Beispiel}
+   
+   \begin{minted}{python}
+    import pke
+    pos = {'NOUN', 'PROPN', 'ADJ'}
+    extractor = pke.unsupervised.TextRank()
+    extractor.load_document(sample, language='en', 
+             normalization=None)
+    extractor.candidate_weighting(window=2, pos=pos, 
+             top_percent=0.33)
+    keyphrases = extractor.get_n_best(n=5)
 
-\begin{minted}{bash}
-python3 -m spacy download en_core_web_trf
+    # ('german education minister', 0.02457112039505464)
+    # ('german health minister', 0.02338341564164348)
+    # ('party parliamentary group leader katrin', 
+    #        0.016440401446080746)
+    # ('deputy clinic directors last', 0.01590210490014274)
+    # ('vaccination campaign', 0.014889362902096531)
 \end{minted}
 
-\begin{minted}{python}
-import spacy
+    \end{frame}
 
-text = "Mr. and Mrs. Dursley, ..."
-
-nlp = spacy.load('en_core_web_trf')
-doc = nlp(text)
-
-print(doc.ents)
-\end{minted}
-\end{frame}
-
-%--------------------
+%---------------------------------------------------------------------
 
 \begin{frame}[fragile]
 \frametitle{Topic Modeling}
@@ -892,7 +1204,8 @@ print(doc.ents)
 \begin{itemize}
 	\item Bestimmung von Themen in einem Text
 	\item in Abhängigkeit der Häufigkeit von Wörtern
-	\item Unsupervised Learning \\ {\footnotesize Topic Modeling bestimmt kein spezifisches Oberthema, sondern Gruppen von Wörtern!}
+	\item Unüberwachtes Lernen:
+    \item \hl{Topic Modeling bestimmt kein spezifisches Oberthema, sondern Gruppen von Wörtern!} $\leadsto$ Interpretation der Ergebnisse teilweise subjektiv
 \end{itemize}
 \end{frame}
 
@@ -904,9 +1217,18 @@ print(doc.ents)
 Voraussetzungen:
 \begin{itemize}
 	\item jedes Dokument ist eine Ansammlung von Wörtern
-	\item jedes Dokument besteht aus mehreren Themen
+	\item jedes Dokument besteht aus mehreren "`verborgenen"' Themen (latent topics)
 	\item jedes Thema lässt sich durch mehrere Wörter beschreiben
 \end{itemize}
+
+Prinzip: 
+\begin{itemize}
+    \item Definiere Anzahl $K$ der Themen, Terme bilden Vokabular
+    \item Bestimme für Dokumente BOW mit Häufigkeiten
+    \item Bestimme für jedes Dokument eine Verteilung über $K$ Themen aus einer Dirichlet-Verteilung
+    \item Bestimme Wahrscheinlichkeit, dass Terme zu einem bestimmen Thema gehören
+\end{itemize}   
+
 \end{frame}
 
 %--------------------
@@ -928,4 +1250,17 @@ lda_model = gensim.models.LdaModel(corpus=corpus,
 lda_model.print_topics()
 # [(0, '0.026*"world" + 0.012*"leave" + 0.011*"events" + ...
 \end{minted}
+\end{frame}
+
+%--------------------
+\begin{frame}
+    \frametitle{Zusammenfassung}
+
+    \begin{itemize}
+        \item Texte als Daten
+        \item Textvorverarbeitungs-Pipeline: Segmentierung, Bereinigung, Feature-Extraktion
+        \item Modelle zur Repräsentation (BOW, Vektorraum, Worteinbettung, \dots)
+        \item klassische Analyseverfahren (Klassifikation, Clustering)
+        \item textspezifische Verfahren (Sentimentanalyse, Keyphrase Extraktion, Topic Modeling, NLP, \dots)
+    \end{itemize}
 \end{frame}
