@@ -1,2 +1,0 @@
-jupyterlab>=3
-pandas==1.4.3

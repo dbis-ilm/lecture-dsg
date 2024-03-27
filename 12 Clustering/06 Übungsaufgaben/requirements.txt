@@ -1,5 +1,0 @@
-jupyterlab>=3
-checkmarkandcross
-pandas==1.4.3
-plotly==5.9.0
-scikit-learn==1.1.1

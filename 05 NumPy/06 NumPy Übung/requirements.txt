@@ -1,3 +1,0 @@
-jupyterlab>=3
-checkmarkandcross
-numpy==1.23.0

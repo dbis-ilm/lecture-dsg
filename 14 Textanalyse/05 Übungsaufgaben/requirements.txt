@@ -1,2 +1,0 @@
-jupyterlab>=3
-nltk==3.8.1

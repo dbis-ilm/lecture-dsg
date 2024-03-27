@@ -1,5 +1,0 @@
-jupyterlab>=3
-pandas==1.4.3
-checkmarkandcross
-grizzly_sql==0.1.5.post1
-PyYAML==6.0
