@@ -16,7 +16,7 @@ def _draw_cube(s: Series, color: Optional[Series] = None) -> str:
     values: Dict[Any, Dict[Any, Dict[Any, Any]]] = {}
     xs, ys, zs = {}, {}, {}
 
-    for (x, y, z), v in s.iteritems():
+    for (x, y, z), v in s.items():
         xs[x] = None
         ys[y] = None
         zs[z] = None
