@@ -1,0 +1,413 @@
+id,name,brand,city
+1,"GREIZ, GERHARD-HAUPTMANN-STR.",Shell,GREIZ
+2,Aral Tankstelle,ARAL,Altenburg
+3,Aral Tankstelle,ARAL,Gotha
+4,TOTAL MUEHLHAUSEN,TOTAL,MUEHLHAUSEN
+5,TOTAL ALTENBURG,TOTAL,ALTENBURG
+6,Freie Tankstelle,1A Tank,Gotha
+7,Freie,1A Tank,Gotha
+8,Auto-Service Schleiz GmbH,,Schleiz
+9,Tankpunkt Muehlhausen,RWZ-Kassel,Muehlhausen
+10,Guenther Tank,bft,Mühlhausen
+11,star Tankstelle,STAR,Gößnitz
+12,star Tankstelle,STAR,Ebeleben / OT Gundersleben
+13,star Tankstelle,STAR,Zeulenroda-Triebes
+14,star Tankstelle,STAR,Sömmerda
+15,star Tankstelle,STAR,Arnstadt
+16,star Tankstelle,STAR,Gera
+17,star Tankstelle,STAR,Weimar
+18,star Tankstelle,STAR,Sömmerda
+19,star Tankstelle,STAR,Rudolstadt
+20,star Tankstelle,STAR,Schmölln
+21,star Tankstelle,STAR,Ilmenau
+22,star Tankstelle,STAR,Leinefelde
+23,star Tankstelle,STAR,Erfurt
+24,"ILMENAU, ZIOLKOWSKISTR.9",Shell,Ilmenau
+25,"ERFURT, LEIPZIGER ST. 36",Shell,Erfurt
+26,bft Tankstelle,bft,Eisenach
+27,Agip Tankstelle,Agip,Vacha
+28,"Gera  (07549), Zopfstr. 8",Gulf,Gera 
+29,bft- Arnstadt IKC,BFT,Arnstadt
+30,Luthardt Martin,bft - Walther,Neuhaus
+31,Aral Tankstelle,ARAL,Eisenach
+32,AS Mineralöle GmbH,AS Mineralöle,Roßleben
+33,TEISTUNGEN - BERGSTR. 39,Agip,Teistungen
+34,OIL! Tankstelle Ebeleben,OIL!,Ebeleben
+35,TOTAL GEFELL,TOTAL,GEFELL
+36,CLASSIC Sondershausen,CLASSIC,Sondershausen
+37,Aral Tankstelle,ARAL,Bad Langensalza
+38,Honsel TS Heiligenstadt,Honsel,Heilbad Heiligenstadt
+39,OIL! Tankstelle Meiningen,OIL!,Meiningen
+40,Aral Tankstelle,ARAL,Sömmerda
+41,Guenther Tank,bft,Mittelstille
+42,Aral Tankstelle,ARAL,Nordhausen
+43,OIL! Tankstelle HTG mbH Vieselbach,OIL!,Vieselbach
+44,TOTAL ZELLA-MEHLIS,TOTAL,ZELLA-MEHLIS
+45,"NIEDERGEBRA, HALLE-KASSELER-STR.",Shell,NIEDERGEBRA
+46,TOTAL JENA,TOTAL,JENA
+47,Q1 Tankstelle,Q1,Neustadt am Rennsteig
+48,AVEX Dingelstädt,AVEX,Dingelstädt
+49,AVEX Bad Tennstedt,AVEX,Bad Tennstedt
+50,TOTAL ILMENAU,TOTAL,ILMENAU
+51,Tankstelle Viernau,W. Dorst,Viernau
+52,Esso Tankstelle,ESSO,RUDOLSTADT
+53,Thüringer Wald Nord,ESSO,Geraberg
+54,"SAALFELD, GERAER STR. 1 A",Shell,Saalfeld
+55,AS Tankstelle Wiehe,Freie Tankstelle Wiehe,Wiehe
+56,bft-Schwabhausen,BFT,Schwabhausen
+57,"MEININGEN, LEIPZIGER STR.",Shell,Meiningen
+58,T ARNSTADT,T,ARNSTADT
+59,OIL! Autohof Mühlberg ,OIL!,Mühlberg 
+60,AVIA Servicestation,AVIA,Schönbrunn
+61,"HÖRSELGAU, A4 HÖRSELGAU NORD.",Shell,Hörselgau
+62,AVIA Servicestation,AVIA,Ilmenau OT Gehren
+63,Silvio Liebmann,AVIA,Lucka
+64,Wittig Energie GmbH,WITTIG Tankautomatenstation,Schmalkalden
+65,AVIA Station,AVIA,Buttstädt
+66,Agrargenossenschaft Bösleben eG,Freie Tankstelle,Wüllersleben
+67,Eichsfeld Süd,ESSO,Kirchworbis
+68,TOTAL HERPF,TOTAL,HERPF
+69,Aral Tankstelle,ARAL,Kaulsdorf
+70,AVEX Ammern,AVEX,Ammern
+71,Freie Tankstelle,Freie Tankstelle Seltenberg,Seltendorf
+72,Margitta Ehrhardt,AVIA,Bad Colberg-Heldburg
+73,TOTAL ERFURT,TOTAL,ERFURT
+74,Gera,BFT,Gera
+75,TOTAL ERFURT,TOTAL,ERFURT
+76,GO Ilmenau Schleusinger Allee,GO,Ilmenau
+77,Aral Tankstelle,ARAL,Hermsdorf
+78,"JENAPRIESNITZ, BUERGELSCHE STR. 2.",Shell,JENAPRIESNITZ
+79,Aral Tankstelle,ARAL,Eisenberg
+80,Eberhard Wiegand,bft,Gebesee
+81,OIL! tank ,OIL!,Buttelstedt 
+82,Aral Tankstelle,ARAL,Leimbach
+83,Thüringer Wald Süd,ARAL,Geraberg
+84,Gulf Autohof Quirla,GULF,Quirla
+85,"NORDHAUSEN, KASSELER LANDSTR.",Shell,NORDHAUSEN
+86,TOTAL ERFURT,TOTAL,ERFURT
+87,NOHRA - AM HUENSTEIN 65,Agip,Nohra
+88,"GREUSSEN, NORDHAEUSER STR.75.",Shell,Greussen
+89,AVIA Tankstelle,AVIA,Meuselwitz
+90,TOTAL SONNEBERG,TOTAL,SONNEBERG
+91,bft- Tankstelle  Christian Hollmotz ,BFT,Obertrebra
+92,"EISENACH, NEUE WIESE",Shell,EISENACH
+93,"WALTERSHAUSEN, EISENACHER LANDSTRASSE 21.",Shell,Waltershausen
+94,TOTAL GEISA,TOTAL,GEISA
+95,Honsel TS Hohengandern,Honsel,Hohengandern
+96,Gulf Triebes,GULF,Triebes
+97,Frank Münch,bft,Schlossvippach
+98,TOTAL WALTERSHAUSEN,TOTAL,WALTERSHAUSEN
+99,Gulf Weida,GULF,Weida
+100,"KÖLLEDA, WEIMARISCHESTR.B 85",Shell,KÖLLEDA
+101,STO,Tankstelle,Oberdorla
+102,Gulf Geraberg,GULF,Geraberg
+103,nordenergie Keula ,nordenergie,Keula 
+104,Supermarkt UNTERWELLENBORN,Supermarkt,UNTERWELLENBORN
+105,Esso Tankstelle,ESSO,ZELLA-MEHLIS
+106,Kai Schuldt,AVIA,Schleusingen
+107,Honsel TS Eigenrieden,Honsel,Eigenrieden
+108,"Gotha, Weimarer Str. 176/ B7",SB,Gotha
+109,Bergmann & Krause OHG,AVIA,Ronneburg
+110,Lutz Rosenburg,AVIA,Weida
+111,JET WEIMAR ERFURTER STR. 51A,JET,WEIMAR
+112,JET ALTENBURG ZEITZER STR. 97,JET,ALTENBURG
+113,JET ERFURT AUGUST- ROEBLING- STR. 7,JET,ERFURT
+114,JET JENA CAMBURGER STR. 66 D,JET,JENA
+115,JET WEIMAR BUTTELSTEDTER STR. 27 B,JET,WEIMAR
+116,JET BUERGEL EISENBERGER STR. 54,JET,BUERGEL
+117,JET GOTHA KINDLEBER STRASSE 134,JET,GOTHA
+118,Gulf Frauenprießnitz,Gulf,Frauenprießnitz
+119,TOTAL SUHL,TOTAL,SUHL
+120,Tankstelle am Marktkauf,Marktkauf,Nordhausen
+121,Aral Tankstelle,ARAL,Ronneburg
+122,AVIA Servicestation,AVIA,Römhild
+123,Esso Tankstelle,ESSO,TABARZ
+124,OIL! Tankstelle Roßleben ,OIL!,Roßleben 
+125,Esso Tankstelle,ESSO,SCHLEIFREISEN
+126,"MEININGEN, LEIPZIGER STR. 110",Shell,Meiningen
+127,Esso Tankstelle,ESSO,GOTHA
+128,TOTAL TIEFENORT,TOTAL,TIEFENORT
+129,OIL! Tankstelle Kaltensundheim ,OIL!,Kaltensundheim 
+130,Guenther Tank,bft,Wutha-Farnroda
+131,Aral Tankstelle,ARAL,Apolda
+132,Oktan Tankstelle,OKTAN,Uder
+133,SAALFELD - KULMBACHER STR. 71,Agip,Saalfeld
+134,Guenther Tank,bft,Leinefelde
+135,Tankstelle am Marktkauf,Marktkauf,Eisenach
+136,Tankstelle Finck GmbH,AVIA,Großbodungen
+137,"Weida, Geraer Landstraße 12",SB,Weida
+138,Greenline Wutha-Farnroda,Greenline,Wutha-Farnroda
+139,ELAN GREIZ,ELAN,GREIZ
+140,"OHRDRUF, WESTFALENSTR.",Shell,OHRDRUF
+141,Esso Tankstelle,ESSO,BAD LANGENSALZA
+142,GREIZ - TANNENDORF STR. 1,Agip,Greiz
+143,"STEINBACH, BAHNHOF STR.",Shell,STEINBACH
+144,Morgensonne GmbH,BFT,Braunichswalde
+145,"GERA, SIEMENSSTR. 1",Shell,GERA
+146,Agrargenossenschaft Queienfeld eG,Freie,Grabfeld OT Queienfeld
+147,TOTAL SONNEBERG,TOTAL,SONNEBERG
+148,SB-Markttankstelle Gera ThÃ¼ringer Str.,SB-Markttankstelle,Gera
+149,Aral Tankstelle,ARAL,Gotha
+150,TOTAL BAD LANGENSALZA,TOTAL,BAD LANGENSALZA
+151,OIL! Tankstelle Kranichfeld,OIL!,Kranichfeld
+152,Aral Tankstelle,ARAL,Mühlhausen
+153,bft Tankstelle,BFT,Triptis
+154,TOTAL GOTHA,TOTAL,GOTHA
+155,BEHO ,Tankstelle,Eisenach
+156,OIL! tank ,OIL!,Schleiz
+157,Agroservice Altenburg-Wal,Agroservice Tankstelle Nobitz,Nobitz
+158,Greenline Bleicherode,Greenline,Bleicherode
+159,AVIA Tankstelle,AVIA,Auma
+160,Globus Handelshof GmbH & Co. KG Betriebsstätte Isserstedt,Globus SB Warenhaus,Isserstedt
+161,Esso Tankstelle,ESSO,SCHLEIFREISEN
+162,"BREITENWORBIS, AUF DEM PFINGSTRASEN",Shell,BREITENWORBIS
+163,Gulf Rastenberg,GULF,Rastenberg
+164,AVIA Station,AVIA,Altenfeld
+165,"OBERLOEDLA/, LOEDLAER CHAUSS.",Shell,OBERLÖDLA/ ALTENBURG
+166,Aral Tankstelle,ARAL,Jena-Lobeda
+167,Agip Tankstelle,Agip,Umpferstedt
+168,HIRSCHBERG - AN DER A 9,Agip,Hirschberg
+169,TOTAL ELLRICH,TOTAL,ELLRICH
+170,TOTAL ERFURT,TOTAL,ERFURT
+171,Aral Tankstelle,ARAL,Greußen
+172,LS&WD Handels- GmbH Agrar-u. Baustoffp. ,LS&WD Handels-GmbH Tankstelle,Wünschendorf
+173,AVIA Servicestation,AVIA,Föritztal OT Neuhaus-Schierschnitz
+174,OIL! Tankstelle Katzhütte ,OIL!,Katzhütte 
+175,OIL! Tankstelle Weimar OT Süßenborn,OIL!,Weimar OT Süßenborn
+176,RWG TS Bad Frankenhausen,Raiffeisen Mansfeld,Bad Frankenhausen
+177,"bft-Tankstelle FTB, Apolda",bft,Apolda
+178,"JENA, RUDOLSTÄDTER STR. 60",Shell,JENA
+179,Badel & Herrmann GbR,bft - Walther,Tambach-Dietharz
+180,AVIA Tankstelle,AVIA,Bad Blankenburg
+181,"HERMSDORF, HERMSDORFER HOEHE ",Shell,HERMSDORF
+182,Bodo Mitel & Stefanie Mittel GbR,AVIA,Themar
+183,TOTAL HEILIGENSTADT,TOTAL,HEILIGENSTADT
+184,Aral Tankstelle,ARAL,Erfurt
+185,SBT Tankstelle,SBT,ERFURT
+186,Lingner Uwe,bft - Walther,Gera
+187,TOTAL EICHELBORN,TOTAL,EICHELBORN
+188,Agip Tankstelle,Agip,Großbreitenbach
+189,AVIA Xpress Station,AVIA Xpress,Remda-Teichel
+190,ELAN GOTHA,ELAN,GOTHA
+191,Markenfreie TS EISENACH,Markenfreie TS,EISENACH
+192,"GERA, RONNEBURGER STR.",Shell,GERA
+193,OIL! Tankstelle Dornburg-Camburg,OIL!,Dornburg-Camburg
+194,Klaus Pfannstiel,AVIA,Breitungen
+195,"bft-Tankstelle FTB, Bad Köstritz",bft,Bad Köstritz
+196,TOTAL ARNSTADT,TOTAL,ARNSTADT
+197,Gulf Warza,GULF,Warza
+198,AVIA Servicestation,AVIA,Bad Liebenstein - Schweina
+199,Gulf Oldisleben,GULF,Oldisleben
+200,Esso Tankstelle,ESSO,WIEHE
+201,ALTENBURG - LEIPZIGER STRAßE 112,Agip,Altenburg
+202,Ortlepp Heizöl Diesel Kohlen,,Ichtershausen
+203,AVIA Tankstelle,AVIA,Kindelbrück
+204,Globus Handelshof GmbH & Co. KG Betriebsstätte Gera-Trebnitz,Globus SB Warenhaus,Gera
+205,Aral Tankstelle,ARAL,Neustadt
+206,Greenline Nordhausen,Greenline,Nordhausen
+207,BFT Oil GmbH,bft,Weimar
+208,"NEUDIETENDORF, AM HOCHEIMER SE.",Shell,Neudietendorf
+209,OIL! Tankstelle Hildburghausen ,OIL!,Hildburghausen 
+210,AVEX Zeulenroda,AVEX,Zeulenroda
+211,AVEX Schlotheim,AVEX,Schlotheim
+212,TOTAL STEINACH,TOTAL,STEINACH
+213,Aral Tankstelle,ARAL,Rudolstadt
+214,Aral Tankstelle,ARAL,Erfurt
+215,TOTAL GERA,TOTAL,GERA
+216,T GERA,T,GERA
+217,AVIA Tankstelle,AVIA,Königsee-Rottenbach
+218,FTO,Tankstelle,Wutha-Farnroda
+219,Agrar GmbH Tankstelle,freie Tankstelle,Teichwolframsdorf
+220,Aral Tankstelle,ARAL,Gera
+221,TOTAL GRAEFENTHAL,TOTAL,GRAEFENTHAL
+222,TOTAL OBERHOF,TOTAL,OBERHOF
+223,Herbsleb-Autoservice e.K.,BFT,Herbsleben
+224,Aral Tankstelle,ARAL,Ohrdruf
+225,Eichsfeld Nord,ESSO,Kirchworbis
+226,TOTAL ILMENAU,TOTAL,ILMENAU
+227,AVIA Station,AVIA,Kölleda
+228,"SAALFELD, MITTLERER WATZENBACH",Supermarkt C&C,SAALFELD
+229,AVIA Servicestation ,AVIA,Neuhaus am Rennweg
+230,"Altenburg, Muensaerstr",SB,Altenburg
+231,Aral Tankstelle,ARAL,Jena
+232,Aral Tankstelle,ARAL,Erfurt
+233,Aral Tankstelle,ARAL,Zeulenroda
+234,TOTAL POESSNECK,TOTAL,POESSNECK
+235,Schlanstedt Frank,bft - Walther,Geismar
+236,TOTAL HELDRUNGEN,TOTAL,HELDRUNGEN
+237,Sprint Schleusingen Schmiedefelder StraÃe,Sprint,Schleusingen
+238,"PLAUE, IN DER AUE",Shell,PLAUE
+239,TOTAL WALDAU,TOTAL,WALDAU
+240,Rhön Tank- u. Servicecenter,bft - Walther,Kaltennordheim
+241,Marktkaufstation Apolda,Marktkauf,Apolda
+242,TOTAL BLEICHERODE,TOTAL,BLEICHERODE
+243,Supermarkt EISENBERG,Supermarkt,EISENBERG
+244,"POESSNECK, NEUSTAEDTER STR.",Shell,POESSNECK
+245,AVEX Ruhla,AVEX,Ruhla
+246,VR-Bank in Südniedersachsen eG,Raiffeisen,Niederorschel / Gernrode
+247,CleanCar AG,CleanCar AG,Erfurt
+248,Aral Tankstelle,ARAL,Worbis
+249,OIL! Tankstelle Gerstungen,OIL!,Gerstungen
+250,Aral Tankstelle,ARAL,Erfurt
+251,OIL! Tankstelle Steinbach-Hallenberg ,OIL!,Steinbach-Hallenberg 
+252,AVIA Tankstelle,AVIA,Weissensee
+253,"WEIMAR, RIESSNERSTR.",Shell,WEIMAR
+254,Altenburger Land Nord,AVIA,Schmölln (OT Weißbach)
+255,TOTAL ELXLEBEN,TOTAL,ELXLEBEN
+256,Jürgen Dorst GmbH,AVIA,Sülzfeld
+257,TOTAL ARTERN,TOTAL,ARTERN
+258,HMH Mineralöl Service,HMH Mineralöl Service,Bad Frankenhausen
+259,Aral Tankstelle,ARAL,Creuzburg
+260,JET BAD SALZUNGEN LEIMBACHER STRASSE 108,JET,BAD SALZUNGEN
+261,bft-Tankstelle Leubecher,,Dermbach
+262,BFT Berrang,BFT,Triptis
+263,"SCHMOELLN, AM KEMNITZGRUND",Shell,SCHMOELLN
+264,Aral Tankstelle,ARAL,Gera
+265,Honsel TS Mühlh. 2,Honsel,Mühlhausen
+266,TOTAL JENA,TOTAL,JENA
+267,Tankcenter APOLDA,Tankcenter,APOLDA
+268,ELAN HERMSDORF,ELAN,HERMSDORF
+269,Markenfreie TS EISENACH,Markenfreie TS,EISENACH
+270,TOTAL SAALFELD,TOTAL,SAALFELD
+271,"EISENACH, CLEMENSSTR.",Shell,Eisenach
+272,Aßmus Jutta,bft - Walther,Barchfeld
+273,"BAD KLOSTERLAUSNITZ, AN DER AU.",Shell,Bad Klosterlausnitz
+274,Tst Am Marktkauf Sonneberg,bft - Walther,Sonneberg
+275,Q1 Tankstelle,Q1,Gumpelstadt
+276,Mühlhausen - KP Petrol GmbH,bft,Mühlhausen
+277,"Arnstadt, Ichtershäuser Straße 20",SB,Arnstadt
+278,OIL! Tankstelle Hildburghausen ,OIL!,Hildburghausen 
+279,BayWa Tankstelle,BayWa,Schwallungen
+280,TOTAL STADTILM,TOTAL,STADTILM
+281,Honsel TS Worbis,Honsel,Worbis
+282,TOTAL JENA,TOTAL,JENA
+283,AVIA Tankstelle,AVIA,Remptendorf
+284,AVEX Heiligenstadt,AVEX,Heiligenstadt
+285,Esso Tankstelle,ESSO,ALTENBURG
+286,TANKCENTER SUHL-MAEBENDORF,Tankcenter,SUHL-MAEBENDORF
+287,"Nohra, Steinbrüchenstr. 1",HEM,Nohra
+288,"Schleiz, Industriestr. 29",HEM,Schleiz
+289,"Gera, Straße der Völkerfreundschaft 2",HEM,Gera
+290,"Gotha, Eschleber Str. 37",HEM,Gotha
+291,"Bad Frankenhausen, Rudolf- Breitscheid- Str. 1",HEM,Bad Frankenhausen
+292,"Gotha, Salzgitterstr. 35",HEM,Gotha
+293,"Weimar, Erfurter Str. 53",HEM,Weimar
+294,"Eisenach, Clemensstr. 19",HEM,Eisenach
+295,"Heilbad Heiligenstadt, Carl-Zeiss-Str. 2",HEM,Heilbad Heiligenstadt
+296,"Eisenach, Kasseler Str. 55",HEM,Eisenach
+297,"Erfurt, Weimarische Str. 142",HEM,Erfurt
+298,Esso Tankstelle,ESSO,ERFURT
+299,Behlert Gbr,bft - Walther,Meiningen
+300,Esso Tankstelle,ESSO,ERFURT
+301,Esso Tankstelle,ESSO,FRIEDRICHRODA
+302,Calpam Tankstelle,Calpam,Mohlsdorf
+303,Honsel TS Mackenrode,Honsel,Hohenstein - Mackenrode
+304,Guenther Tank,bft,Schwarza
+305,Wagner Roland,bft - Walther,Stadtlengsfeld
+306,Aral Tankstelle,ARAL,Ohrdruf
+307,EISFELD (GUEST) - B4,Agip,Eisfeld (Guest)
+308,AVIA Kurt Günther,AVIA Xpress,Krauthausen
+309,Elf MEININGEN,Elf,MEININGEN
+310,TOTAL ERFURT,TOTAL,ERFURT
+311,T SCHMOELLN,T,SCHMOELLN
+312,Globus Handelshof GmbH & Co. KG Betriebsstaette Erfurt-Linderbach,Globus SB Warenhaus,Erfurt-Linderbach
+313,TOTAL ERFURT-STOTTERNHEIM,TOTAL,ERFURT-STOTTERNHEIM
+314,Sprint Brattendorf Schleusinger Str.,Sprint,Brattendorf
+315,TOTAL MEININGEN,TOTAL,MEININGEN
+316,DB Tankstelle Meiningen,Frei,Meiningen
+317,Aral Tankstelle,ARAL,Bad Berka
+318,Honsel TS Sondershausen,Honsel,Sondershausen
+319,OIL! Tankstelle Waltershausen ,OIL!,Waltershausen 
+320,"KRAUTHAUSEN SUEDSEITE, BAB 4.",Shell,KRAUTHAUSEN SUEDSEITE
+321,Freie Tankstelle Kessler,Freie Tankstelle,Römhild
+322,Access BAD SALZUNGEN,Access,BAD SALZUNGEN
+323,OIL! Tankstelle Suhl ,OIL!,Suhl 
+324,"ALTENBURG, SCHMÖLLNSCHE LAND.",Shell,Altenburg
+325,"Ronneburg, Friedrichstr. 7",SB,Ronneburg
+326,Guenther Tank,bft,Marksuhl
+327,"GOTHA, OHRDRUFER STR.",Shell,GOTHA
+328,EISENBERG - JENAER STR. 71,Agip,Eisenberg
+329,TOTAL NORDHAUSEN,TOTAL,NORDHAUSEN
+330,Gulf Schönbrunn,GULF,Saalburg-Ebersdorf
+331,OIL! Tankstelle Dittersdorf ,OIL!,Dittersdorf 
+332,Aral Tankstelle,ARAL,Mellingen
+333,TOTAL EICHELBORN,TOTAL,EICHELBORN
+334,Esso Tankstelle,ESSO,"LANGENWETZENDORF, OT WILDETAUBE"
+335,NORDHAUSEN - FREIHERR-VOM-STEIN-STR,Agip,Nordhausen
+336,TOTAL BAD BERKA,TOTAL,BAD BERKA
+337,Aral Tankstelle,ARAL,Suhl
+338,"EISENBERG, JENAER STR.",Shell,EISENBERG
+339,"ERFURT, BEI DEN FROSCHAECKERN",Shell,ERFURT
+340,"SUHL, HOELDERLINSTR",Shell,Suhl
+341,"SCHWABHAUSEN, AN DER B 247",Shell,SCHWABHAUSEN
+342,AVEX Breitungen,AVEX,Breitungen
+343,Gulf Remda-Teichel,GULF,Remda-Teichel
+344,"KOENIGSEE, GEWERBEGEBIET /B 88",Shell,KOENIGSEE
+345,"KRAUTHAUSEN NORDSEITE, BAB 4.",Shell,KRAUTHAUSEN NORDSEITE
+346,Aral Tankstelle,ARAL,Schmalkalden
+347,star Tankstelle,STAR,Schmalkalden
+348,Esso Tankstelle,ESSO,BAD BLANKENBURG
+349,Esso Tankstelle,ESSO,ICHTERSHAUSEN
+350,"ERFURT, STOTTERNHEIMER STR.",Shell,ERFURT
+351,Tankstelle Suhl,W. Dorst,Suhl
+352,Aral Tankstelle,ARAL,Sonneberg
+353,"Bad Langensalza, Poststr. 12",HEM,Bad Langensalza
+354,Aral Tankstelle,ARAL,Weimar
+355,Freie Tankstelle,1A Tank,Zella-Mehlis
+356,Kappe Tank-& Raststaetten GmbH,BFT,Mittelpoellnitz
+357,"SAALFELD, MITTLERER WATZENBACH",Shell,SAALFELD
+358,Freie,1A Tank,Gotha
+359,Sprint Wandersleben Das Steinfeld,Sprint,Wandersleben
+360,Gulf Schalkau,GULF,Schalkau
+361,ELAN BLANKENHAIN,ELAN,BLANKENHAIN
+362,OIL! Tankstelle Frauenprießnitz,OIL!,Frauenprießnitz
+363,Fahrzeugservice GmbH Kirchheim,freie,Kirchheim
+364,"Aral Tankstelle, BAT THÜRINGER WALD SÜD",ARAL,Geraberg
+365,Agri Futura GmbH,Raiffeisen,Magdala
+366,star Tankstelle,STAR,Saalfeld
+367,AVEX Treffurt,AVEX,Treffurt
+368,Aral Tankstelle,ARAL,Arnstadt
+369,bft Weimar,GREBE,Weimar-Gelmeroda
+370,TOTAL AUTOHOF LAUCHA,TOTAL,LAUCHA
+371,"WASUNGEN, AM RAESCHEN.",Shell,Wasungen
+372,Aral Tankstelle,ARAL,Gera
+373,Aral Tankstelle,ARAL,Erfurt
+374,Altenburger Land Süd,TOTAL,Schmölln (OT Weißbach)
+375,H & F Logistik GmbH,H & F Logistik GmbH,Nordhausen
+376,Supermarkt JENA,Supermarkt,JENA
+377,Sprint Uder Strasse der Einheit,Sprint,Uder
+378,Wingenfeld Energie GmbH,,Bad Salzungen-Langenfeld
+379,Wingenfeld Energie Gmbh,Wingenfeld Energie Gmbh,Bad Salzungen
+380,Aral Tankstelle,ARAL,Kahla
+381,star Tankstelle,STAR,Erfurt
+382,star Tankstelle,STAR,Nordhausen
+383,star Tankstelle,STAR,Erfurt
+384,Globus Handelshof GmbH & Co. KG  Betriebsstaette Mittelhausen,Globus SB Warenhaus,Mittelhausen
+385,"SCHLEUSINGEN, SUHLER STR",Shell,Schleusingen
+386,star Tankstelle,STAR,Schleiz
+387,"FLOH, KÖRLER STR.",Shell,Floh
+388,TOTAL ERFURT,TOTAL,ERFURT
+389,AVEX Menteroda,AVEX,Menteroda
+390,AVIA Tankstelle,AVIA,Stadtroda
+391,Auto-Service Bischoff GmbH,AVIA,Eisfeld
+392,Raiffeisen Tankstelle Rudolstadt,Raiffeisen,Rudolstadt
+393,"Jena, Rudolstädter Str. 89",HEM,Jena
+394,Aral Tankstelle,ARAL,Nordhausen
+395,Aral Tankstelle,ARAL,Eisenach
+396,HTH Hugo Tankstellenbetrieb Hohenroda,Freie Tankstelle,Dippach
+397,JET SUHL WUERZBURGER STR. 3,JET,SUHL
+398,JET NORDHAUSEN PARKALLEE 14,JET,NORDHAUSEN
+399,Esso Tankstelle,ESSO,LOEBICHAU
+400,Guenther Tank,bft,Berka
+401,TOTAL SCHOENSTEDT,TOTAL,SCHOENSTEDT
+402,Aral Tankstelle,ARAL,Jena
+403,Q1 Tankstelle,Q1,Dorndorf
+404,Honsel TS Mühlh.1,Honsel,Mühlhausen
+405,Hengst Sylvia,bft - Walther,Sondershausen
+406,Globus Handelshof GmbH & Co. KG Betriebsstätte Hermsdorf,Globus SB Warenhaus,Hermsdorf
+407,Gulf Ranis,GULF,Ranis
+408,Münchenbernsdorf,BFT,Münchenbernsdorf
+409,"TRIPTIS, NEUSTAEDTER STR.",Shell,TRIPTIS
+410,ILMENAU - BUECHELOHER STR./B 87,Agip,Ilmenau
+411,K- Griesheim,freie,Ilmtal
+412,Aral Tankstelle,ARAL,Weimar
